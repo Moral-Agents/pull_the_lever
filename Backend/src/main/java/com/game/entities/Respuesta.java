@@ -31,7 +31,26 @@ public class Respuesta {
             nullable = false,
             columnDefinition = "SMALLINT"
     )
-    private short respuesta;
+    private Boolean respuesta;
 
+    @Column(
+            name="edad",
+            nullable = false,
+            columnDefinition = "INTEGER"
+    )
+    private Integer edad;
 
+    @Column(
+            name="nacionalidad",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
+    private String nacionalidad;
+
+    @Column(
+            name="genero",
+            nullable = false,
+            columnDefinition = "CHAR"
+    )
+    private Character genero;
 }
