@@ -1,6 +1,10 @@
 package com.game.entities;
 
-import javax.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Entity
 @Table(
@@ -44,7 +48,7 @@ public class Usuario {
                 nullable = false,
                 columnDefinition = "INTEGER"
         )
-        private int edad;
+        private Integer edad;
 
         @Column(
                 name="nacionalidad",
@@ -58,13 +62,13 @@ public class Usuario {
                 nullable = false,
                 columnDefinition = "CHAR"
         )
-        private Char genero;
+        private Character genero;
 
         @Column(
                 name="tipo",
                 nullable = false,
                 columnDefinition = "CHAR"
         )
-        private Char tipo;
+        private Character tipo;
 
 }
