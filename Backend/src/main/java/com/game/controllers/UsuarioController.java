@@ -25,4 +25,10 @@ public class UsuarioController {
                 usuarioService.createUsuario(createUsuarioDto));
     }
 
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/iniciar-sesion/{correoUsuario}/{claveUsuario}")
+    public GameResponse<UsuarioDto> getUsuarioByCorreoAndClave(@PathVariable String correoUsuario, @PathVariable String claveUsuario) throws GameException{
+        return new GameResponse<>("Success", String.valueOf(HttpStatus.OK),"OK",
+                usuarioService.getUsuarioByCorreoAndClave(correoUsuario, claveUsuario));
+    }
 }

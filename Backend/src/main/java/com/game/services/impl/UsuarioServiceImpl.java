@@ -13,8 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
@@ -22,6 +20,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
 
     @Transactional
     @Override
@@ -42,6 +41,13 @@ public class UsuarioServiceImpl implements UsuarioService {
         }
         return modelMapper.map(getUsuarioEntity(usuario.getId()), UsuarioDto.class);
 
+    }
+
+    @Override
+    public UsuarioDto getUsuarioByCorreoAndClave(String correoUsuario, String claveUsuario) throws GameException {
+        Usuario usuario = usuarioRepository.findByCorreoAndClave(correoUsuario, claveUsuario)
+                .orElseThrow(() -> new NotFoundException("NOT FOUND-404","USUARIO_NOTFOUND-404"));
+        return modelMapper.map(getUsuarioEntity(usuario.getId()), UsuarioDto.class);
     }
 
     private Usuario getUsuarioEntity(Long usuarioId) throws GameException {
