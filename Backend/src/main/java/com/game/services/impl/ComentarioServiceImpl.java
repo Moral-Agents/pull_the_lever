@@ -15,6 +15,7 @@ import com.game.services.ComentarioService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -54,6 +55,8 @@ public class ComentarioServiceImpl implements ComentarioService {
         }
         return modelMapper.map(getComentarioEntity(comentario.getId()), ComentarioDto.class);
     }
+
+
 
     @Override
     public List<ComentarioDto> getComentariosByPreguntaId(Long preguntaId) throws GameException {

@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path="/pull-the-lever"+"/v1")
-public class PreguntasController {
+public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
@@ -22,4 +24,5 @@ public class PreguntasController {
         return new GameResponse<>("Success",String.valueOf(HttpStatus.OK), "OK",
                 usuarioService.createUsuario(createUsuarioDto));
     }
+
 }
