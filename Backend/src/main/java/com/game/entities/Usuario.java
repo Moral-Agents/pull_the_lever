@@ -39,6 +39,20 @@ public class Usuario {
         private Long id;
 
         @Column(
+                name="correo",
+                nullable = false,
+                columnDefinition = "TEXT"
+        )
+        private String correo;
+
+        @Column(
+                name="clave",
+                nullable = false,
+                columnDefinition = "TEXT"
+        )
+        private String clave;
+
+        @Column(
                 name="nombre",
                 nullable = false,
                 columnDefinition = "TEXT"
