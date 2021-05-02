@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(
@@ -71,4 +73,17 @@ public class Usuario {
         )
         private Character tipo;
 
+        @OneToMany(
+                mappedBy = "usuario",
+                cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+                fetch = FetchType.LAZY
+        )
+        private List<Respuesta> respuestas =new ArrayList<>();
+
+        @OneToMany(
+                mappedBy = "usuario",
+                cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+                fetch = FetchType.LAZY
+        )
+        private List<Comentario> comentarios =new ArrayList<>();
 }

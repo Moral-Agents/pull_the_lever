@@ -39,4 +39,26 @@ public class Comentario {
     )
     private String comentario;
 
+    @ManyToOne
+    @JoinColumn(
+            name = "pregunta_id",
+            nullable = false,
+            referencedColumnName = "id",
+            foreignKey = @ForeignKey(
+                    name="pregunta_respuesta_fk"
+            )
+    )
+    private Pregunta pregunta;
+
+    @ManyToOne
+    @JoinColumn(
+            name = "usuario_id",
+            nullable = false,
+            referencedColumnName = "id",
+            foreignKey = @ForeignKey(
+                    name="usuario_respuesta_fk"
+            )
+    )
+    private Usuario usuario;
+
 }
