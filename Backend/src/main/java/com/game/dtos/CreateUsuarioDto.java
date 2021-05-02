@@ -7,6 +7,8 @@ import lombok.Setter;
 @Setter
 public class CreateUsuarioDto {
     private String nombre;
+    private String correo;
+    private String clave;
     private Integer edad;
     private String nacionalidad;
     private Character genero;

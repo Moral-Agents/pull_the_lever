@@ -8,6 +8,7 @@ import lombok.Setter;
 public class UsuarioDto {
     private Long id;
     private String nombre;
+    private String correo;
     private Integer edad;
     private String nacionalidad;
     private Character genero;
