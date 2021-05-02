@@ -1,5 +1,10 @@
 package com.game.dtos;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class PreguntaDto {
     private Long id;
     private String nombre;
