@@ -66,6 +66,6 @@ public class ComentarioServiceImpl implements ComentarioService {
 
     private Comentario getComentarioEntity(Long comentarioId) throws GameException {
         return comentarioRepository.findById(comentarioId)
-                .orElseThrow(()-> new NotFoundException("NOT-401-1", "RESERVATION_NOT_FOUND"));
+                .orElseThrow(()-> new NotFoundException("NOT-401-1", "COMENTARIO_NOT_FOUND"));
     }
 }
