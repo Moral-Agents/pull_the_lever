@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PreguntaServiceImpl implements PreguntaService {
@@ -21,6 +23,8 @@ public class PreguntaServiceImpl implements PreguntaService {
 
     @Autowired
     private PreguntaRepository preguntaRepository;
+
+
 
     @Transactional
     @Override
@@ -37,6 +41,13 @@ public class PreguntaServiceImpl implements PreguntaService {
         }
         return modelMapper.map(getPreguntaEntity(pregunta.getId()), PreguntaDto.class);
     }
+
+    @Override
+    public List<PreguntaDto> getPreguntas() throws GameException {
+        List<Pregunta> preguntasEntity = preguntaRepository.findAll();
+        return preguntasEntity.stream().map(pregunta->modelMapper.map(pregunta,PreguntaDto.class)).collect(Collectors.toList());
+    }
+
 
     private Pregunta getPreguntaEntity(Long preguntaID) throws GameException{
         return preguntaRepository.findById(preguntaID)
