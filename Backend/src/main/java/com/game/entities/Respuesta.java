@@ -27,6 +27,12 @@ public class Respuesta {
     )
 
     @Column(
+            name = "id",
+            updatable = false
+    )
+    private Long id;
+
+    @Column(
             name = "respuesta",
             nullable = false,
             columnDefinition = "SMALLINT"

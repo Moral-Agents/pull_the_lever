@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class RespuestaServiceImpl implements RespuestaService {
+
     public static final ModelMapper modelMapper = new ModelMapper();
 
     @Autowired
@@ -42,6 +43,9 @@ public class RespuestaServiceImpl implements RespuestaService {
                 .orElseThrow(()-> new NotFoundException("NOT-401-1", "USUARIO_NOT_FOUND"));
 
         Respuesta respuesta = new Respuesta();
+        respuesta.setEdad(createRespuestaDto.getEdad());
+        respuesta.setNacionalidad(createRespuestaDto.getNacionalidad());
+        respuesta.setGenero(createRespuestaDto.getGenero());
         respuesta.setRespuesta(createRespuestaDto.getRespuesta());
         respuesta.setPregunta(pregunta);
         respuesta.setUsuario(usuario);
@@ -51,7 +55,7 @@ public class RespuestaServiceImpl implements RespuestaService {
         } catch (Exception  ex){
             throw new InternalServerErrorException("INTERNAL_SERVER_ERROR", "INTERNAL_SERVER_ERROR");
         }
-        return modelMapper.map(getRespuestaEntity(respuesta.getPregunta().getId()), RespuestaDto.class);
+        return modelMapper.map(getRespuestaEntity(respuesta.getId()), RespuestaDto.class);
     }
 
     @Override

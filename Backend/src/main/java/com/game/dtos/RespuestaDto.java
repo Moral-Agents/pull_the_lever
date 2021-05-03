@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class RespuestaDto {
+    private Long id;
     private short respuesta;
     private Integer edad;
     private String nacionalidad;
