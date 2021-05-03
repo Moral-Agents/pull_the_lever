@@ -1,6 +1,5 @@
 package com.game.controllers;
 
-
 import com.game.dtos.ComentarioDto;
 import com.game.dtos.CreateComentarioDto;
 import com.game.exceptions.GameException;
@@ -15,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping(path="/pull-the-lever"+"/v1")
 public class ComentarioController {
+
 
     @Autowired
     private ComentarioService comentarioService;

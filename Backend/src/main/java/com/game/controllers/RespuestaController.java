@@ -12,22 +12,24 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/pull-the-lever"+"v1")
+@RequestMapping(path="/pull-the-lever"+"/v1")
 public class RespuestaController {
-    @Autowired
-    private RespuestaService respuestaService;
 
-    @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/respuestas/{preguntaId}")
-    public GameResponse<List<RespuestaDto>> getRespuestaByPreguntaId(@PathVariable Long preguntaId) throws GameException{
-        return new GameResponse<>("Success",  String.valueOf(HttpStatus.OK), "OK",
-                respuestaService.getRespuestaByPreguntaId(preguntaId));
-    }
 
-    @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/respuestas")
-    public GameResponse<RespuestaDto> createRespuesta(@RequestBody CreateRespuestaDto createRespuestaDto) throws GameException{
+   @Autowired
+   private RespuestaService respuestaService;
+
+   @ResponseStatus(HttpStatus.OK)
+   @GetMapping("/respuestas/{preguntaId}")
+   public GameResponse<List<RespuestaDto>> getRespuestaByPreguntaId(@PathVariable Long preguntaId) throws GameException{
+       return new GameResponse<>("Success",  String.valueOf(HttpStatus.OK), "OK",
+               respuestaService.getRespuestaByPreguntaId(preguntaId));
+   }
+
+   @ResponseStatus(HttpStatus.OK)
+   @PostMapping("/respuestas")
+   public GameResponse<RespuestaDto> createRespuesta(@RequestBody CreateRespuestaDto createRespuestaDto) throws GameException{
         return new GameResponse<>("Success", String.valueOf(HttpStatus.OK), "OK",
                 respuestaService.createRespuesta(createRespuestaDto));
-    }
+   }
 }

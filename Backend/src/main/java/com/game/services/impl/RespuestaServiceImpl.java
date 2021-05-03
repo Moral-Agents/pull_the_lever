@@ -14,11 +14,13 @@ import com.game.repositories.UsuarioRepository;
 import com.game.services.RespuestaService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class RespuestaServiceImpl implements RespuestaService {
     public static final ModelMapper modelMapper = new ModelMapper();
 

@@ -31,7 +31,7 @@ public class Respuesta {
             nullable = false,
             columnDefinition = "SMALLINT"
     )
-    private Boolean respuesta;
+    private Short respuesta;
 
     @Column(
             name="edad",

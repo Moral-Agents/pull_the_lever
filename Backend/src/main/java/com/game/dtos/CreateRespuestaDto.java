@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CreateRespuestaDto {
-    private Boolean respuesta;
+    private Short respuesta;
     private Integer edad;
     private String nacionalidad;
     private Character genero;
