@@ -24,12 +24,30 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
+              "src/assets/images/favicon.png",
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/css/magnific-popup.css",
+              "src/assets/css/slick.css",
+              "src/assets/css/LineIcons.css",
+              "src/assets/css/bootstrap.min.css",
+              "src/assets/css/default.css",
+              "src/assets/css/style.css"
             ],
-            "scripts": []
+            "scripts": ["src/assets/js/vendor/jquery-1.12.4.min.js"
+              ,"src/assets/js/vendor/modernizr-3.7.1.min.js",
+              "src/assets/js/popper.min.js",
+              "src/assets/js/bootstrap.min.js",
+              "src/assets/js/slick.min.js",
+              "src/assets/js/jquery.magnific-popup.min.js",
+              "src/assets/js/ajax-contact.js",
+              "src/assets/js/imagesloaded.pkgd.min.js",
+              "src/assets/js/isotope.pkgd.min.js",
+              "src/assets/js/jquery.easing.min.js",
+              "src/assets/js/scrolling-nav.js",
+              "src/assets/js/main.js"]
           },
           "configurations": {
             "production": {
@@ -91,12 +109,30 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
+              "src/assets/images/favicon.png",
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/css/magnific-popup.css",
+              "src/assets/css/slick.css",
+              "src/assets/css/LineIcons.css",
+              "src/assets/css/bootstrap.min.css",
+              "src/assets/css/default.css",
+              "src/assets/css/style.css"
             ],
-            "scripts": []
+            "scripts": ["src/assets/js/vendor/jquery-1.12.4.min.js"
+              ,"src/assets/js/vendor/modernizr-3.7.1.min.js",
+              "src/assets/js/popper.min.js",
+              "src/assets/js/bootstrap.min.js",
+              "src/assets/js/slick.min.js",
+              "src/assets/js/jquery.magnific-popup.min.js",
+              "src/assets/js/ajax-contact.js",
+              "src/assets/js/imagesloaded.pkgd.min.js",
+              "src/assets/js/isotope.pkgd.min.js",
+              "src/assets/js/jquery.easing.min.js",
+              "src/assets/js/scrolling-nav.js",
+              "src/assets/js/main.js"]
           }
         }
       }
