@@ -47,3 +47,26 @@
   background-color: transparent;
   color: #fff;
 }
+
+.start {
+  margin: 0rem auto;
+  width: 60%;
+  padding: 3rem 0rem;
+}
+
+.start_box {
+  display: flex;
+  justify-content: center;
+  padding: 6rem;
+}
+
+.start_button {
+  color: #fff;
+  font-family: "Poppins", sans-serif !important;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+  background-color: #0067f4;
+  padding: 0.7rem 1rem;
+  border-radius: 5px;
+}
