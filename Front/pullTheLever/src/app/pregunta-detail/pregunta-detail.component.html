@@ -12,11 +12,14 @@
                 <li class="dilemmas_views">Visitas: {{pregunta?.visitas}}</li>
                 <li class="dilemmas_date">Fecha: {{pregunta?.fecha_creacion}}</li>
             </ul>
+            <a class="dilemmas_a" href="#">Matar a Wilmar</a>
+            <a class="dilemmas_b" href="#">Matar a Stephano</a>
         </div>
     </div>
 </div>
 
 <div class="comments">
+    <h3>{{listComentarios.length}} Comentarios</h3>
     <form class="comments_form" [formGroup]="form"  (submit)="createComentarios()">
       <div class="comments_user-left">
         <img class="comments_user-img" src="https://picsum.photos/100"/>

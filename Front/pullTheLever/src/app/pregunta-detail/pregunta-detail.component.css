@@ -29,8 +29,24 @@
   text-align: justify;
 }
 
+.dilemmas_a,
+.dilemmas_b {
+  color: #fff;
+  padding: 0.5rem 1rem;
+}
+
+.dilemmas_a {
+  background-color: #0067f4;
+  margin-right: 1rem;
+}
+
+.dilemmas_b {
+  background-color: #a93226;
+}
+
 .dilemmas_ul {
   display: flex;
+  margin-bottom: 1rem;
 }
 
 .dilemmas_views {
@@ -45,7 +61,7 @@
 
 .comments_form {
   display: flex;
-  margin-bottom: 2rem;
+  margin: 2rem 0rem;
 }
 
 .comments_user-left {
@@ -57,6 +73,10 @@
   width: 90%;
   display: flex;
   flex-direction: column;
+}
+
+.comments_user-img {
+  border-radius: 50%;
 }
 
 .comments_textarea {
@@ -84,6 +104,10 @@
 
 .comment_left {
   width: 10%;
+}
+
+.comment_left img {
+  border-radius: 50%;
 }
 
 .comment_right {
