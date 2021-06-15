@@ -24,7 +24,6 @@ export class PreguntaDetailComponent implements OnInit {
     this.form = this.formBuilder.group({
       text:['']
     })
-    this.updateComentarios("1", "PRUEBA NUEVA DESPUES");
   }
 
   public createComentarios() {
@@ -47,7 +46,7 @@ export class PreguntaDetailComponent implements OnInit {
       })
   }
 
-  public updateComentarios(id:string, comentario:string) {
+  public updateComentarios(id:string, comentario:string = "Mensaje editado por defecto") {
     this.RestService.put(`https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/updateComentarios`, {
       id: id,
       comentario: comentario,
