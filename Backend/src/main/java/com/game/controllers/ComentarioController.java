@@ -35,7 +35,7 @@ public class ComentarioController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PutMapping("/comentarios")
+    @PutMapping("/updateComentarios")
     public void updateComentario(@RequestBody ComentarioDto comentarioDto) throws GameException{
         comentarioService.updateComentario(comentarioDto);
     }
