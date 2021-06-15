@@ -4,10 +4,13 @@ import com.game.dtos.CreatePreguntaDto;
 import com.game.dtos.CreateUsuarioDto;
 import com.game.dtos.PreguntaDto;
 import com.game.dtos.UsuarioDto;
+import com.game.entities.Pregunta;
 import com.game.exceptions.GameException;
 import com.game.responses.GameResponse;
 import com.game.services.PreguntaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -49,5 +52,12 @@ public class PreguntaController {
     @DeleteMapping("/deletePregunta/{preguntaId}")
     public void deletePregunta(@PathVariable Long preguntaId){
         preguntaService.deletePreguntaById(preguntaId);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/preguntasPage")
+    public GameResponse<Page<Pregunta>> getAllPreguntas(Pageable pageable) throws GameException{
+        return new GameResponse<>("Success", String.valueOf(HttpStatus.OK), "OK",
+                preguntaService.findAll(pageable));
     }
 }

@@ -10,6 +10,8 @@ import com.game.repositories.PreguntaRepository;
 import com.game.services.PreguntaService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -32,7 +34,7 @@ public class PreguntaServiceImpl implements PreguntaService {
         Pregunta pregunta = new Pregunta();
         pregunta.setNombre(createPreguntaDto.getNombre());
         pregunta.setDescripcion(createPreguntaDto.getDescripcion());
-        pregunta.setImg(createPreguntaDto.getImg());
+        pregunta.setImg("https://picsum.photos/100");
         pregunta.setCant_si(0l);
         pregunta.setCant_no(0l);
         pregunta.setVisitas(0l);
@@ -84,6 +86,11 @@ public class PreguntaServiceImpl implements PreguntaService {
     @Override
     public void deletePreguntaById(Long preguntaId) {
         preguntaRepository.deleteById(preguntaId);
+    }
+
+    @Override
+    public Page<Pregunta> findAll(Pageable pageable) throws GameException {
+        return preguntaRepository.findAll(pageable);
     }
 
 
