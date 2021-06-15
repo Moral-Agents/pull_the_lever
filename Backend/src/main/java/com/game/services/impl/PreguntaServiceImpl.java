@@ -50,6 +50,13 @@ public class PreguntaServiceImpl implements PreguntaService {
         Pregunta pregunta = preguntaRepository.findById(preguntaId)
                 .orElseThrow(() -> new NotFoundException("NOT FOUND-404", "PREGUNTA_NOTFOUND-404"));
 
+        pregunta.setVisitas(pregunta.getVisitas() + 1);
+        try {
+            pregunta = preguntaRepository.save(pregunta);
+        }catch (Exception ex){
+            throw new InternalServerErrorException("INTERNAL_SERVER_ERROR","INTERNAL_SERVER_ERROR");
+        }
+
         return modelMapper.map(getPreguntaEntity(pregunta.getId()), PreguntaDto.class);
     }
 
