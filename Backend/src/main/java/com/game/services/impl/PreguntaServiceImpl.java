@@ -66,6 +66,26 @@ public class PreguntaServiceImpl implements PreguntaService {
         return preguntasEntity.stream().map(pregunta->modelMapper.map(pregunta,PreguntaDto.class)).collect(Collectors.toList());
     }
 
+    @Override
+    public void updatePregunta(PreguntaDto preguntaDto) throws GameException {
+        Pregunta pregunta = preguntaRepository.findById(preguntaDto.getId())
+                .orElseThrow(() -> new NotFoundException("NOT FOUND-404", "PREGUNTA_NOTFOUND-404"));
+
+        pregunta.setNombre(preguntaDto.getNombre());
+        pregunta.setDescripcion(preguntaDto.getDescripcion());
+
+        try{
+            pregunta = preguntaRepository.save(pregunta);
+        }catch (Exception ex){
+            throw new InternalServerErrorException("INTERNAL_SERVER_ERROR", "INTERNAL_SERVER_ERROR");
+        }
+    }
+
+    @Override
+    public void deletePreguntaById(Long preguntaId) {
+        preguntaRepository.deleteById(preguntaId);
+    }
+
 
     private Pregunta getPreguntaEntity(Long preguntaID) throws GameException{
         return preguntaRepository.findById(preguntaID)

@@ -10,4 +10,6 @@ public interface PreguntaService {
     PreguntaDto createPregunta(CreatePreguntaDto createPreguntaDto) throws GameException;
     PreguntaDto getPreguntaById(Long preguntaId) throws GameException;
     List<PreguntaDto> getPreguntas() throws GameException;
+    void updatePregunta(PreguntaDto preguntaDto) throws GameException;
+    void deletePreguntaById(Long preguntaId);
 }
