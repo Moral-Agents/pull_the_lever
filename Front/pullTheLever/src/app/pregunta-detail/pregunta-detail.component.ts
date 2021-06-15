@@ -58,6 +58,13 @@ export class PreguntaDetailComponent implements OnInit {
       })
   }
 
+  public deleteComentario(id:string) {
+    this.RestService.delete(`https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/deleteComentarios/${id}`)
+      .subscribe(response => {
+        console.log(response);
+      })
+  }
+
   getData(id:string){
     this.RestService.get(`https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/preguntas/${id}`)
     .subscribe(response => {
