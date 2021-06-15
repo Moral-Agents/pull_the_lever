@@ -32,4 +32,11 @@ public class PreguntaController {
         return new GameResponse<>("Success",String.valueOf(HttpStatus.OK), "OK",
                 preguntaService.createPregunta(createPreguntaDto));
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/preguntas/{preguntaId}")
+    public GameResponse<PreguntaDto> getPreguntaById(@PathVariable Long preguntaId) throws GameException{
+        return new GameResponse<>("Success", String.valueOf(HttpStatus.OK), "OK",
+                preguntaService.getPreguntaById(preguntaId));
+    }
 }

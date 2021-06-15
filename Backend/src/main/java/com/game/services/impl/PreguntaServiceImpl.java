@@ -43,6 +43,14 @@ public class PreguntaServiceImpl implements PreguntaService {
     }
 
     @Override
+    public PreguntaDto getPreguntaById(Long preguntaId) throws GameException {
+        Pregunta pregunta = preguntaRepository.findById(preguntaId)
+                .orElseThrow(() -> new NotFoundException("NOT FOUND-404", "PREGUNTA_NOTFOUND-404"));
+
+        return modelMapper.map(getPreguntaEntity(pregunta.getId()), PreguntaDto.class);
+    }
+
+    @Override
     public List<PreguntaDto> getPreguntas() throws GameException {
         List<Pregunta> preguntasEntity = preguntaRepository.findAll();
         return preguntasEntity.stream().map(pregunta->modelMapper.map(pregunta,PreguntaDto.class)).collect(Collectors.toList());
