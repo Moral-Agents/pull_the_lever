@@ -34,7 +34,7 @@ public class PreguntaServiceImpl implements PreguntaService {
         Pregunta pregunta = new Pregunta();
         pregunta.setNombre(createPreguntaDto.getNombre());
         pregunta.setDescripcion(createPreguntaDto.getDescripcion());
-        pregunta.setImg(createPreguntaDto.getImg());
+        pregunta.setImg("https://picsum.photos/100");
         pregunta.setCant_si(0l);
         pregunta.setCant_no(0l);
         pregunta.setVisitas(0l);
