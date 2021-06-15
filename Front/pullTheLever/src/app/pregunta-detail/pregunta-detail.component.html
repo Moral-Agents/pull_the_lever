@@ -1,15 +1,5 @@
 <app-header-guest></app-header-guest>
 
-<div class="start">
-    <div [ngStyle]="{'background':'linear-gradient(
-        rgba(0, 0, 0, 0.7), 
-        rgba(0, 0, 0, 0.7)
-      ),url(assets/images/game.jpg)'
-    }" class="start_box">
-        <a class="start_button" href="">Dilema Moral Random</a>
-    </div>
-</div>
-
 <div class="dilemmas">
     <div class="dilemmas_item">
         <div class="dilemmas_left">
@@ -27,12 +17,25 @@
 </div>
 
 <div class="comments">
-    <form [formGroup]="form"  (submit)="createComentarios()">
-      <textarea formControlName="text"></textarea>
-      <div><button>Enviar</button></div>
+    <form class="comments_form" [formGroup]="form"  (submit)="createComentarios()">
+      <div class="comments_user-left">
+        <img class="comments_user-img" src="https://picsum.photos/100"/>
+      </div>
+      <div class="comments_user-right">
+        <input type="text" placeholder="Añada un comentario público...." class="comments_textarea" formControlName="text"/>
+        <button class="comments_submit">Enviar</button>
+      </div>
+      
     </form>
-    <div class="comment">
-
+    <div class="comment" *ngFor="let comentario of listComentarios">
+        <div class="comment_left">
+            <img src="https://picsum.photos/100"/>
+        </div>
+        <div class="comment_right">
+            <h4>Vitalik Buterin </h4>
+            <p>{{comentario?.comentario}}</p>
+            <p>24 Mar 2021</p>
+        </div>
     </div>
 </div>
 

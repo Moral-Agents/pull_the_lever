@@ -10,6 +10,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 export class PreguntaDetailComponent implements OnInit {
   public form!: FormGroup
   public pregunta:any
+  public listComentarios:any = {}
   constructor(private route:ActivatedRoute, private formBuilder: FormBuilder, private RestService:RestService) { }
 
   ngOnInit(): void {
@@ -17,6 +18,7 @@ export class PreguntaDetailComponent implements OnInit {
       const{params} = paramMap;
       this.getData(params.id)
     })
+    this.readComentarios()
     this.form = this.formBuilder.group({
       text:['']
     })
@@ -39,6 +41,7 @@ export class PreguntaDetailComponent implements OnInit {
   public readComentarios() {
     this.RestService.get('https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/comentarios/1')
       .subscribe(response => {
+        this.listComentarios = JSON.parse(JSON.stringify(response)).data;
         console.log(response);
       })
   }

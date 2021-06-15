@@ -1,27 +1,5 @@
-.start {
-  margin: 0rem auto;
-  width: 60%;
-  padding: 3rem 0rem;
-}
-
-.start_box {
-  display: flex;
-  justify-content: center;
-  padding: 6rem;
-}
-
-.start_button {
-  color: #fff;
-  font-family: "Poppins", sans-serif !important;
-  text-transform: uppercase;
-  font-weight: 700;
-  text-align: center;
-  background-color: #0067f4;
-  padding: 0.7rem 1rem;
-  border-radius: 5px;
-}
-
 .dilemmas {
+  padding-top: 3rem;
   width: 60%;
   margin: 0 auto;
 }
@@ -57,4 +35,64 @@
 
 .dilemmas_views {
   padding-right: 1rem;
+}
+
+.comments {
+  width: 60%;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+
+.comments_form {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.comments_user-left {
+  margin-right: 1rem;
+  width: 10%;
+}
+
+.comments_user-right {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.comments_textarea {
+  width: 100%;
+  background: none;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 1px solid #c1c1c1;
+}
+
+.comments_submit {
+  align-self: flex-end;
+  margin-top: 1rem;
+  border: none;
+  background-color: #0067f4;
+  color: #fff;
+  padding: 0.5rem 1rem;
+}
+
+.comment {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.comment_left {
+  width: 10%;
+}
+
+.comment_right {
+  padding-left: 1rem;
+  width: 90%;
+}
+
+.comment_right h4,
+.comment_right p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
 }
