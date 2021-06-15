@@ -40,7 +40,7 @@ public class ComentarioController {
         comentarioService.updateComentario(comentarioDto);
     }
 
-    @DeleteMapping("/comentarios/{comentarioId}")
+    @DeleteMapping("/deleteComentarios/{comentarioId}")
     public void deleteComentario(@PathVariable Long comentarioId){
         comentarioService.deleteComentario(comentarioId);
     }
