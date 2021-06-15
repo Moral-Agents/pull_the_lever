@@ -39,4 +39,15 @@ public class PreguntaController {
         return new GameResponse<>("Success", String.valueOf(HttpStatus.OK), "OK",
                 preguntaService.getPreguntaById(preguntaId));
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PutMapping("/updatePregunta")
+    public void updatePregunta(@RequestBody PreguntaDto preguntaDto) throws GameException{
+        preguntaService.updatePregunta(preguntaDto);
+    }
+
+    @DeleteMapping("/deletePregunta/{preguntaId}")
+    public void deletePregunta(@PathVariable Long preguntaId){
+        preguntaService.deletePreguntaById(preguntaId);
+    }
 }
