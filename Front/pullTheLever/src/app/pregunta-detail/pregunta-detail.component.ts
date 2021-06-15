@@ -8,7 +8,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
   styleUrls: ['./pregunta-detail.component.css']
 })
 export class PreguntaDetailComponent implements OnInit {
-  public form!:FormGroup
+  public form!: FormGroup;
   public pregunta:any
   public listComentarios:any = {}
   public id:any
@@ -24,6 +24,7 @@ export class PreguntaDetailComponent implements OnInit {
     this.form = this.formBuilder.group({
       text:['']
     })
+    this.updateComentarios("1", "PRUEBA NUEVA DESPUES");
   }
 
   public createComentarios() {
@@ -42,6 +43,18 @@ export class PreguntaDetailComponent implements OnInit {
     this.RestService.get(`https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/comentarios/${id}`)
       .subscribe(response => {
         this.listComentarios = JSON.parse(JSON.stringify(response)).data;
+        console.log(response);
+      })
+  }
+
+  public updateComentarios(id:string, comentario:string) {
+    this.RestService.put(`https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/updateComentarios`, {
+      id: id,
+      comentario: comentario,
+      preguntaId: "1",
+      usuarioId: "1"
+    })
+      .subscribe(response => {
         console.log(response);
       })
   }
