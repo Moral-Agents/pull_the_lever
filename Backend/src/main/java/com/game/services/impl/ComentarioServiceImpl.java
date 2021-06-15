@@ -64,6 +64,25 @@ public class ComentarioServiceImpl implements ComentarioService {
         return comentariosEntity.stream().map(comentario -> modelMapper.map(comentario, ComentarioDto.class)).collect(Collectors.toList());
     }
 
+    @Override
+    public void updateComentario(ComentarioDto comentarioDto) throws GameException {
+        Comentario comentario = comentarioRepository.findById(comentarioDto.getId())
+                .orElseThrow(()-> new NotFoundException("NOT FOUND-404", "COMENTARIO_NOTFOUND-404"));
+
+        comentario.setComentario(comentarioDto.getComentario());
+
+        try {
+            comentario = comentarioRepository.save(comentario);
+        }catch (Exception ex){
+            throw new InternalServerErrorException("INTERNAL_SERVER_ERROR", "INTERNAL_SERVER_ERROR");
+        }
+    }
+
+    @Override
+    public void deleteComentario(Long comentarioId) {
+        comentarioRepository.deleteById(comentarioId);
+    }
+
     private Comentario getComentarioEntity(Long comentarioId) throws GameException {
         return comentarioRepository.findById(comentarioId)
                 .orElseThrow(()-> new NotFoundException("NOT-401-1", "COMENTARIO_NOT_FOUND"));

@@ -9,5 +9,6 @@ import java.util.List;
 public interface ComentarioService {
     ComentarioDto createComentario(CreateComentarioDto createComentarioDto) throws GameException;
     List<ComentarioDto> getComentariosByPreguntaId(Long preguntaId) throws GameException;
-
+    void updateComentario(ComentarioDto comentarioDto) throws GameException;
+    void deleteComentario(Long comentarioId);
 }

@@ -33,4 +33,15 @@ public class ComentarioController {
                 comentarioService.createComentario(createComentarioDto));
 
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PutMapping("/comentarios")
+    public void updateComentario(@RequestBody ComentarioDto comentarioDto) throws GameException{
+        comentarioService.updateComentario(comentarioDto);
+    }
+
+    @DeleteMapping("/comentarios/{comentarioId}")
+    public void deleteComentario(@PathVariable Long comentarioId){
+        comentarioService.deleteComentario(comentarioId);
+    }
 }
