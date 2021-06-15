@@ -9,33 +9,25 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 })
 export class GameComponent implements OnInit {
   public form!: FormGroup;
+  public listPreguntas:any = {}
   constructor(private RestService:RestService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     // Si hay error de control access habilitar CORS
-    this.readComentarios();
+    this.readPreguntas();
     this.form = this.formBuilder.group({
       text:['']
     })
   }
 
-  public createComentarios() {
-    this.RestService.post('https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/comentarios',
-      {
-        comentario: this.form.value.text,
-        preguntaId: "1",
-        usuarioId: "1"
-      }
-    )
-      .subscribe(respuesta => {
-        console.log("Success");
+
+  public readPreguntas() {
+    this.RestService.get('https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/preguntas')
+      .subscribe(response => {
+        this.listPreguntas = JSON.parse(JSON.stringify(response)).data;
+        console.log(response);
+
       })
   }
 
-  public readComentarios() {
-    this.RestService.get('https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/comentarios/1')
-      .subscribe(response => {
-        console.log(response);
-      })
-  }
 }

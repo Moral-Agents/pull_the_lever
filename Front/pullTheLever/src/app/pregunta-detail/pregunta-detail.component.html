@@ -1,0 +1,47 @@
+<app-header-guest></app-header-guest>
+
+<div class="dilemmas">
+    <div class="dilemmas_item">
+        <div class="dilemmas_left">
+            <img src="https://picsum.photos/600/300" alt="imagen dilema">
+        </div>
+        <div class="dilemmas_right">
+            <h2 class="dilemmas_title">{{pregunta?.nombre}}</h2>
+            <p class="dilemmas_description">{{pregunta?.descripcion}}</p>
+            <ul class="dilemmas_ul">
+                <li class="dilemmas_views">Visitas: {{pregunta?.visitas}}</li>
+                <li class="dilemmas_date">Fecha: {{pregunta?.fecha_creacion}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="comments">
+    <form class="comments_form" [formGroup]="form"  (submit)="createComentarios()">
+      <div class="comments_user-left">
+        <img class="comments_user-img" src="https://picsum.photos/100"/>
+      </div>
+      <div class="comments_user-right">
+        <input type="text" placeholder="Añada un comentario público...." class="comments_textarea" formControlName="text"/>
+        <button class="comments_submit">Enviar</button>
+      </div>
+      
+    </form>
+    <div class="comment" *ngFor="let comentario of listComentarios">
+        <div class="comment_left">
+            <img src="https://picsum.photos/100"/>
+        </div>
+        <div class="comment_right">
+            <h4>Vitalik Buterin </h4>
+            <p>{{comentario?.comentario}}</p>
+            <p>24 Mar 2021</p>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
+
+
+
+
+
