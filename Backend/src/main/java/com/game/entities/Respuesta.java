@@ -16,16 +16,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Respuesta {
     @Id
-    @SequenceGenerator(
-            name = "respuesta_sequence",
-            sequenceName = "respuesta_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "respuesta_sequence"
-    )
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(
             name = "id",
             updatable = false

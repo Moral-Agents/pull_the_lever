@@ -13,7 +13,9 @@ import java.util.List;
         name="usuario",
         uniqueConstraints = {
                 @UniqueConstraint(name ="usuario_nombre_unique",
-                        columnNames = "nombre")
+                        columnNames = "nombre"),
+                @UniqueConstraint(name ="usuario_correo_unique",
+                        columnNames = "correo")
         }
 )
 
@@ -22,16 +24,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Usuario {
         @Id
-        @SequenceGenerator(
-                name="usuario_sequence",
-                sequenceName = "usuario_sequence",
-                allocationSize = 1
-        )
-        @GeneratedValue(
-                strategy = GenerationType.SEQUENCE,
-                generator = "usuario_sequence"
-        )
-
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(
                 name="id",
                 updatable = false

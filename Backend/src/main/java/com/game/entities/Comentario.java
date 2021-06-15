@@ -16,16 +16,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Comentario {
     @Id
-    @SequenceGenerator(
-            name = "comentario_sequence",
-            sequenceName = "comentario_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "comentario_sequence"
-    )
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(
             name = "id",
             updatable = false

@@ -22,16 +22,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Pregunta {
     @Id
-    @SequenceGenerator(
-            name = "pregunta_sequence",
-            sequenceName = "pregunta_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "pregunta_sequence"
-    )
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(
             name = "id",
             updatable = false
