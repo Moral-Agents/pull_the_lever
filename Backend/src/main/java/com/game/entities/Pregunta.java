@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +38,13 @@ public class Pregunta {
     private String nombre;
 
     @Column(
+            name = "descripcion",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
+    private String descripcion;
+
+    @Column(
             name = "img",
             nullable = false,
             columnDefinition = "TEXT"
@@ -56,6 +64,20 @@ public class Pregunta {
             columnDefinition = "BIGINT"
     )
     private Long cant_no;
+
+    @Column(
+            name = "visitas",
+            nullable = false,
+            columnDefinition = "BIGINT"
+    )
+    private Long visitas;
+
+    @Column(
+            name = "fecha_creacion",
+            nullable = false,
+            columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private LocalDateTime fecha_creacion;
+
 
     @OneToMany(
             mappedBy = "pregunta",

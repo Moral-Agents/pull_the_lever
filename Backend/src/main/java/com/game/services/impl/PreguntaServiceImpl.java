@@ -31,9 +31,12 @@ public class PreguntaServiceImpl implements PreguntaService {
     public PreguntaDto createPregunta(CreatePreguntaDto createPreguntaDto) throws GameException{
         Pregunta pregunta = new Pregunta();
         pregunta.setNombre(createPreguntaDto.getNombre());
+        pregunta.setDescripcion(createPreguntaDto.getDescripcion());
         pregunta.setImg(createPreguntaDto.getImg());
-        pregunta.setCant_si(createPreguntaDto.getCant_si());
-        pregunta.setCant_no(createPreguntaDto.getCant_no());
+        pregunta.setCant_si(0l);
+        pregunta.setCant_no(0l);
+        pregunta.setVisitas(0l);
+        pregunta.setFecha_creacion(createPreguntaDto.getFecha_creacion());
         try {
             pregunta = preguntaRepository.save(pregunta);
         }catch (Exception ex){
