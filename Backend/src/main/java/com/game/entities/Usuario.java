@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,22 +38,23 @@ public class Usuario {
                 nullable = false,
                 columnDefinition = "TEXT"
         )
+        @Email
         private String correo;
 
         @Column(
                 name="clave",
                 nullable = false,
-                columnDefinition = "TEXT",
-                length = 30
+                columnDefinition = "TEXT"
         )
+        @Size(min = 8, max = 30)
         private String clave;
 
         @Column(
                 name="nombre",
                 nullable = false,
-                columnDefinition = "TEXT",
-                length = 30
+                columnDefinition = "TEXT"
         )
+        @Size(min = 5, max = 30)
         private String nombre;
 
         @Column(
