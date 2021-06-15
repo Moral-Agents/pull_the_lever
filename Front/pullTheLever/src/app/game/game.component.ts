@@ -9,11 +9,13 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 })
 export class GameComponent implements OnInit {
   public form!: FormGroup;
+  public randomId!:number;
   public listPreguntas:any = {}
   constructor(private RestService:RestService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     // Si hay error de control access habilitar CORS
+
     this.readPreguntas();
     this.form = this.formBuilder.group({
       text:['']
@@ -25,8 +27,8 @@ export class GameComponent implements OnInit {
     this.RestService.get('https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/preguntas')
       .subscribe(response => {
         this.listPreguntas = JSON.parse(JSON.stringify(response)).data;
-        console.log(response);
-
+        this.randomId = Math.floor(Math.random() * this.listPreguntas.length + 1)
+        console.log(this.listPreguntas.length);
       })
   }
 
