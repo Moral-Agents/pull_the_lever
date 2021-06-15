@@ -8,7 +8,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
   styleUrls: ['./pregunta-detail.component.css']
 })
 export class PreguntaDetailComponent implements OnInit {
-  public form!: FormGroup
+  public form!:FormGroup
   public pregunta:any
   public listComentarios:any = {}
   constructor(private route:ActivatedRoute, private formBuilder: FormBuilder, private RestService:RestService) { }
@@ -16,14 +16,13 @@ export class PreguntaDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe( (paramMap:any) => {
       const{params} = paramMap;
-      this.getData(params.id)
+      this.getData(params.id);
+      this.readComentarios(params.id);
     })
-    this.readComentarios()
     this.form = this.formBuilder.group({
       text:['']
     })
   }
-
 
   public createComentarios() {
     this.RestService.post('https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/comentarios',
@@ -38,8 +37,8 @@ export class PreguntaDetailComponent implements OnInit {
       })
   }
 
-  public readComentarios() {
-    this.RestService.get('https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/comentarios/1')
+  public readComentarios(id:string) {
+    this.RestService.get(`https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/comentarios/${id}`)
       .subscribe(response => {
         this.listComentarios = JSON.parse(JSON.stringify(response)).data;
         console.log(response);
@@ -53,5 +52,4 @@ export class PreguntaDetailComponent implements OnInit {
       console.log(this.pregunta)
     })
   }
-
 }
