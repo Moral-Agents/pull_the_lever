@@ -11,24 +11,25 @@ export class PreguntaDetailComponent implements OnInit {
   public form!:FormGroup
   public pregunta:any
   public listComentarios:any = {}
+  public id:any
   constructor(private route:ActivatedRoute, private formBuilder: FormBuilder, private RestService:RestService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe( (paramMap:any) => {
       const{params} = paramMap;
-      this.getData(params.id);
-      this.readComentarios(params.id);
+      this.id = params.id;
     })
+    this.getData(this.id);
+    this.readComentarios(this.id);
     this.form = this.formBuilder.group({
       text:['']
     })
   }
 
   public createComentarios() {
-    this.RestService.post('https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/comentarios',
-      {
+    this.RestService.post('https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/comentarios', {
         comentario: this.form.value.text,
-        preguntaId: "1",
+        preguntaId: this.id,
         usuarioId: "1"
       }
     )
