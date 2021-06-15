@@ -17,7 +17,7 @@
 
 <div class="start">
     <div [ngStyle]="{'background':'linear-gradient(
-        rgba(0, 0, 0, 0.7), 
+        rgba(0, 0, 0, 0.7),
         rgba(0, 0, 0, 0.7)
       ),url(assets/images/game.jpg)'
     }" class="start_box">
@@ -38,8 +38,8 @@
         </div>
         <div class="dilemmas_right">
             <h2 class="dilemmas_title"> Lorem Impsum Dolor Sit Amet</h2>
-            <p class="dilemmas_description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                Explicabo nam quos odio libero quae, fugit vitae voluptatibus saepe earum. 
+            <p class="dilemmas_description">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Explicabo nam quos odio libero quae, fugit vitae voluptatibus saepe earum.
                 Atque expedita quod a, officiis non quos ratione veniam eius numquam!</p>
             <ul class="dilemmas_ul">
                 <li class="dilemmas_views">Visitas: 32,123</li>
@@ -53,8 +53,8 @@
         </div>
         <div class="dilemmas_right">
             <h2 class="dilemmas_title"> Lorem Impsum Dolor Sit Amet</h2>
-            <p class="dilemmas_description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                Explicabo nam quos odio libero quae, fugit vitae voluptatibus saepe earum. 
+            <p class="dilemmas_description">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Explicabo nam quos odio libero quae, fugit vitae voluptatibus saepe earum.
                 Atque expedita quod a, officiis non quos ratione veniam eius numquam!</p>
             <ul class="dilemmas_ul">
                 <li class="dilemmas_views">Visitas: 32,123</li>
@@ -68,8 +68,8 @@
         </div>
         <div class="dilemmas_right">
             <h2 class="dilemmas_title"> Lorem Impsum Dolor Sit Amet</h2>
-            <p class="dilemmas_description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                Explicabo nam quos odio libero quae, fugit vitae voluptatibus saepe earum. 
+            <p class="dilemmas_description">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Explicabo nam quos odio libero quae, fugit vitae voluptatibus saepe earum.
                 Atque expedita quod a, officiis non quos ratione veniam eius numquam!</p>
             <ul class="dilemmas_ul">
                 <li class="dilemmas_views">Visitas: 32,123</li>
@@ -83,14 +83,20 @@
         </div>
         <div class="dilemmas_right">
             <h2 class="dilemmas_title"> Lorem Impsum Dolor Sit Amet</h2>
-            <p class="dilemmas_description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                Explicabo nam quos odio libero quae, fugit vitae voluptatibus saepe earum. 
+            <p class="dilemmas_description">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Explicabo nam quos odio libero quae, fugit vitae voluptatibus saepe earum.
                 Atque expedita quod a, officiis non quos ratione veniam eius numquam!</p>
             <ul class="dilemmas_ul">
                 <li class="dilemmas_views">Visitas: 32,123</li>
                 <li class="dilemmas_date">Fecha: 14 Jun 2021</li>
             </ul>
         </div>
+    </div>
+    <div>
+      <form [formGroup]="form"  (submit)="createComentarios()">
+        <textarea formControlName="text"></textarea>
+        <div><button>Enviar</button></div>
+      </form>
     </div>
 </div>
 
