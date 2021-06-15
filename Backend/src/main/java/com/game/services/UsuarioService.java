@@ -8,4 +8,5 @@ import com.game.exceptions.GameException;
 public interface UsuarioService {
     UsuarioDto createUsuario(CreateUsuarioDto createUsuarioDto) throws GameException;
     UsuarioDto getUsuarioByCorreoAndClave(String correoUsuario, String claveUsuario) throws GameException;
+    void updateTipoDeUsuario(UsuarioDto usuarioDto) throws GameException;
 }
