@@ -10,13 +10,13 @@
     </div>
 </div>
 
-<div class="dilemmas" *ngFor="let pregunta of listPreguntas">
+<div class="dilemmas">
     <div class="dilemmas_item">
         <div class="dilemmas_left">
             <img src="https://picsum.photos/600/300" alt="imagen dilema">
         </div>
         <div class="dilemmas_right">
-            <h2 class="dilemmas_title"><a [routerLink] = "['/','pregunta',pregunta?.id]">{{pregunta?.nombre}}</a></h2>
+            <h2 class="dilemmas_title">{{pregunta?.nombre}}</h2>
             <p class="dilemmas_description">{{pregunta?.descripcion}}</p>
             <ul class="dilemmas_ul">
                 <li class="dilemmas_views">Visitas: {{pregunta?.visitas}}</li>
@@ -26,9 +26,18 @@
     </div>
 </div>
 
+<div class="comments">
+    <form [formGroup]="form"  (submit)="createComentarios()">
+      <textarea formControlName="text"></textarea>
+      <div><button>Enviar</button></div>
+    </form>
+    <div class="comment">
 
+    </div>
+</div>
 
 <app-footer></app-footer>
+
 
 
 
