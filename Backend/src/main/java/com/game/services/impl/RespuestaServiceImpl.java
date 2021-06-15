@@ -42,6 +42,10 @@ public class RespuestaServiceImpl implements RespuestaService {
         Usuario usuario = usuarioRepository.findById(createRespuestaDto.getUsuarioId())
                 .orElseThrow(()-> new NotFoundException("NOT-401-1", "USUARIO_NOT_FOUND"));
 
+        if (respuestaRepository.findByPreguntaIdAndUsuarioId(pregunta.getId(), usuario.getId()).isPresent()) {
+            throw new NotFoundException("Respuesta-401-1", "Respuesta_EXIST");
+        }
+
         Respuesta respuesta = new Respuesta();
         respuesta.setEdad(createRespuestaDto.getEdad());
         respuesta.setNacionalidad(createRespuestaDto.getNacionalidad());
@@ -50,8 +54,16 @@ public class RespuestaServiceImpl implements RespuestaService {
         respuesta.setPregunta(pregunta);
         respuesta.setUsuario(usuario);
 
+        if(respuesta.getRespuesta() == 0){
+            pregunta.setCant_no(pregunta.getCant_no() + 1);
+        }
+        if(respuesta.getRespuesta() == 1){
+            pregunta.setCant_si(pregunta.getCant_si() + 1);
+        }
+
         try {
             respuesta = respuestaRepository.save(respuesta);
+            pregunta = preguntaRepository.save(pregunta);
         } catch (Exception  ex){
             throw new InternalServerErrorException("INTERNAL_SERVER_ERROR", "INTERNAL_SERVER_ERROR");
         }

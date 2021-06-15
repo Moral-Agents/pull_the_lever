@@ -50,6 +50,20 @@ public class UsuarioServiceImpl implements UsuarioService {
         return modelMapper.map(getUsuarioEntity(usuario.getId()), UsuarioDto.class);
     }
 
+    @Override
+    public void updateTipoDeUsuario(UsuarioDto usuarioDto) throws GameException {
+        Usuario usuario = usuarioRepository.findById(usuarioDto.getId())
+                .orElseThrow(() -> new NotFoundException("NOT FOUND-404", "USUARIO_NOTFOUND-404"));
+
+        usuario.setTipo(usuarioDto.getTipo());
+
+        try{
+            usuario = usuarioRepository.save(usuario);
+        }catch (Exception ex){
+            throw new InternalServerErrorException("INTERNAL_SERVER_ERROR", "INTERNAL_SERVER_ERROR");
+        }
+    }
+
     private Usuario getUsuarioEntity(Long usuarioId) throws GameException {
         return usuarioRepository.findById(usuarioId)
                 .orElseThrow(() -> new NotFoundException("NOT FOUND-404","USUARIO_NOTFOUND-404"));

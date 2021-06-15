@@ -31,4 +31,10 @@ public class UsuarioController {
         return new GameResponse<>("Success", String.valueOf(HttpStatus.OK),"OK",
                 usuarioService.getUsuarioByCorreoAndClave(correoUsuario, claveUsuario));
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PutMapping("/usuario")
+    public void updateTipoDeUsuario(@RequestBody UsuarioDto usuarioDto) throws GameException{
+        usuarioService.updateTipoDeUsuario(usuarioDto);
+    }
 }
