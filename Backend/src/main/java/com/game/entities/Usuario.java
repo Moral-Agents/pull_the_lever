@@ -41,14 +41,16 @@ public class Usuario {
         @Column(
                 name="clave",
                 nullable = false,
-                columnDefinition = "TEXT"
+                columnDefinition = "TEXT",
+                length = 30
         )
         private String clave;
 
         @Column(
                 name="nombre",
                 nullable = false,
-                columnDefinition = "TEXT"
+                columnDefinition = "TEXT",
+                length = 30
         )
         private String nombre;
 
