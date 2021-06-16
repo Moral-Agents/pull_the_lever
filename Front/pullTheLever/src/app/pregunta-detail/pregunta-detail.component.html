@@ -35,11 +35,24 @@
             <img src="https://picsum.photos/100"/>
         </div>
         <div class="comment_right">
-            <h4>Vitalik Buterin </h4>
-            <p>{{comentario?.comentario}}</p>
-            <p>24 Mar 2021</p>
-            <button (click)="updateComentarios(comentario.id)">Editar</button>
-            <button (click)="deleteComentario(comentario.id)">Borrar</button>
+            <div class="comment_header">
+                <h4>Vitalik Buterin </h4>
+                <div class="comment_actions" *ngIf="accion == false">
+                    <a class="comment_icon-update" (click) ="accion = true"><i class="lni lni-pencil"></i></a>
+                    <a (click)="deleteComentario(comentario.id)"><i class="lni lni-trash"></i></a>
+                </div>
+            </div>
+            <div *ngIf="accion == false">
+                <p>{{comentario?.comentario}}</p>
+                <p>24 Mar 2021</p>
+            </div>
+            <div *ngIf="accion == true">
+                <form [formGroup]="form"  (submit)="updateComentarios(comentario.id)">
+                    <input type="text" value={{comentario?.comentario}} class="comments_textarea" formControlName="textUpdate"/>
+                    <button class="comments_submit">Modificar</button>
+                </form>
+            </div>
+            
         </div>
     </div>
 </div>

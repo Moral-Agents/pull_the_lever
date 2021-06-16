@@ -120,3 +120,25 @@
   margin-bottom: 1rem;
   font-size: 1rem;
 }
+
+.comment_header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment_actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.comment_actions i {
+  font-size: 1.3rem;
+}
+
+.comment_actions i:hover {
+  color: #0067f4;
+}
+
+.comment_icon-update {
+  margin-right: 1rem;
+}

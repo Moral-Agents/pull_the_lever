@@ -12,6 +12,7 @@ export class PreguntaDetailComponent implements OnInit {
   public pregunta:any
   public listComentarios:any = {}
   public id:any
+  accion:boolean = false
   constructor(private route:ActivatedRoute, private formBuilder: FormBuilder, private RestService:RestService) { }
 
   ngOnInit(): void {
@@ -22,8 +23,10 @@ export class PreguntaDetailComponent implements OnInit {
     this.getData(this.id);
     this.readComentarios(this.id);
     this.form = this.formBuilder.group({
-      text:['']
+      text:[''],
+      textUpdate:['']
     })
+
   }
 
   public createComentarios() {
@@ -35,6 +38,7 @@ export class PreguntaDetailComponent implements OnInit {
     )
       .subscribe(respuesta => {
         console.log("Success");
+        this.readComentarios(this.id);
       })
   }
 
@@ -46,15 +50,17 @@ export class PreguntaDetailComponent implements OnInit {
       })
   }
 
-  public updateComentarios(id:string, comentario:string = "Mensaje editado por defecto") {
+  public updateComentarios(id:string) {
     this.RestService.put(`https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/updateComentarios`, {
       id: id,
-      comentario: comentario,
-      preguntaId: "1",
+      comentario: this.form.value.textUpdate,
+      preguntaId: this.id,
       usuarioId: "1"
     })
       .subscribe(response => {
         console.log(response);
+        this.readComentarios(this.id);
+        this.accion = false;
       })
   }
 
@@ -62,6 +68,7 @@ export class PreguntaDetailComponent implements OnInit {
     this.RestService.delete(`https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/deleteComentarios/${id}`)
       .subscribe(response => {
         console.log(response);
+        this.readComentarios(this.id);
       })
   }
 
