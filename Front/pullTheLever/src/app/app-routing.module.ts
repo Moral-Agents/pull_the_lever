@@ -4,6 +4,7 @@ import { GameComponent } from './game/game.component';
 import { HomeComponent } from './home/home.component';
 import { PreguntaDetailComponent } from './pregunta-detail/pregunta-detail.component';
 import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from "./login/login.component";
 const routes: Routes = [
   {
     path:'',
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path:'pregunta/:id',
     component:PreguntaDetailComponent
+  },
+  {
+    path:'login',
+    component:LoginComponent
   }
 ];
 

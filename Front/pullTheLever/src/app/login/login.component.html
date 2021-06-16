@@ -1,1 +1,16 @@
-<p>login works!</p>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<section id="login">
+  <div>
+    <form [formGroup]="form" (submit)="getUsuario()">
+      <h1>Login</h1>
+      <div>
+        <input type="text" id="mail" name="mail" placeholder="Correo" formControlName="correo">
+      </div>
+      <div>
+        <input type="text" id="password" name="password" placeholder="Contraseña" formControlName="clave">
+      </div>
+      <button>Iniciar Sesión</button>
+    </form>
+  </div>
+</section>
+

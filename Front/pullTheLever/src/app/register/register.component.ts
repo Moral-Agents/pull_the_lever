@@ -36,9 +36,7 @@ export class RegisterComponent implements OnInit {
       tipo: "C",
     })
       .subscribe(response => {
-        let user = JSON.parse(JSON.stringify(response)).data
         console.log(response);
-        localStorage.setItem("accessToken", user.id);
       })
   }
 }
