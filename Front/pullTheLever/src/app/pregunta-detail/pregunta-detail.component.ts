@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RestService } from '../rest.service';
 import {FormBuilder, FormGroup} from "@angular/forms";
@@ -12,6 +12,7 @@ export class PreguntaDetailComponent implements OnInit {
   public pregunta:any
   public listComentarios:any = {}
   public id:any
+  public key:any
   accion:boolean = false
   constructor(private route:ActivatedRoute, private formBuilder: FormBuilder, private RestService:RestService) { }
 
@@ -43,10 +44,11 @@ export class PreguntaDetailComponent implements OnInit {
   }
 
   public readComentarios(id:string) {
+    let inputPost = document.getElementById("inputPost") as HTMLInputElement;
     this.RestService.get(`https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/comentarios/${id}`)
       .subscribe(response => {
         this.listComentarios = JSON.parse(JSON.stringify(response)).data;
-        console.log(response);
+        inputPost.value = "";
       })
   }
 
@@ -59,8 +61,8 @@ export class PreguntaDetailComponent implements OnInit {
     })
       .subscribe(response => {
         console.log(response);
-        this.readComentarios(this.id);
         this.accion = false;
+        this.readComentarios(this.id);
       })
   }
 

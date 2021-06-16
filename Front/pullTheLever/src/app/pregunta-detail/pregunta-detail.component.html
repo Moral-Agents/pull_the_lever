@@ -25,7 +25,7 @@
         <img class="comments_user-img" src="https://picsum.photos/100"/>
       </div>
       <div class="comments_user-right">
-        <input type="text" placeholder="Añada un comentario público...." class="comments_textarea" formControlName="text"/>
+        <input id="inputPost" type="text" placeholder="Añada un comentario público...." class="comments_textarea" formControlName="text"/>
         <button class="comments_submit">Enviar</button>
       </div>
 
@@ -38,15 +38,15 @@
             <div class="comment_header">
                 <h4>Vitalik Buterin </h4>
                 <div class="comment_actions" *ngIf="accion == false">
-                    <a class="comment_icon-update" (click) ="accion = true"><i class="lni lni-pencil"></i></a>
+                    <a class="comment_icon-update" (click) ="accion = true;key = comentario.id"><i class="lni lni-pencil"></i></a>
                     <a (click)="deleteComentario(comentario.id)"><i class="lni lni-trash"></i></a>
                 </div>
             </div>
-            <div *ngIf="accion == false">
+            <div *ngIf="accion == false || comentario.id != key">
                 <p>{{comentario?.comentario}}</p>
                 <p>24 Mar 2021</p>
             </div>
-            <div *ngIf="accion == true">
+            <div *ngIf="accion == true && comentario.id == key">
                 <form [formGroup]="form"  (submit)="updateComentarios(comentario.id)">
                     <input type="text" value={{comentario?.comentario}} class="comments_textarea" formControlName="textUpdate"/>
                     <button class="comments_submit">Modificar</button>
