@@ -1,1 +1,30 @@
-<p>register works!</p>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<section id="register">
+    <div>
+        <form [formGroup]="form" (submit)="createUser()">
+            <h1>Registro</h1>
+            <div>
+                <input type="text" id="name" name="name" placeholder="Nombre" formControlName="nombre">
+            </div>
+            <div>
+                <input type="text" id="mail" name="mail" placeholder="Correo" formControlName="correo">
+            </div>
+            <div>
+                <input type="text" id="password" name="password" placeholder="Contraseña" formControlName="clave">
+            </div>
+            <div>
+              <input type="text" id="edad" name="edad" placeholder="Edad" formControlName="edad">
+            </div>
+            <div>
+                <input type="text" id="nationality" name="nationality" placeholder="Nacionalidad" formControlName="nacionalidad">
+            </div>
+            <div>
+                <input type="text" id="Género" name="Género" placeholder="Género" formControlName="genero">
+            </div>
+            <button>Registrarse</button>
+            <div>
+                <a>Ya tienes cuenta?</a>
+            </div>
+        </form>
+    </div>
+</section>

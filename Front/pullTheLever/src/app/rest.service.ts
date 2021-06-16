@@ -8,11 +8,11 @@ export class RestService {
 
   constructor(private http: HttpClient) { }
 
-  public get(url:string) {
-    return this.http.get(url);
-  }
   public post(url:string, body:any) {
     return this.http.post(url, body);
+  }
+  public get(url:string) {
+    return this.http.get(url);
   }
   public put(url:string, body:any) {
     return this.http.put(url, body);

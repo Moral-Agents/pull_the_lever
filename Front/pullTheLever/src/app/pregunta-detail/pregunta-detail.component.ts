@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RestService } from '../rest.service';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import { FormBuilder, FormGroup } from "@angular/forms";
 @Component({
   selector: 'app-pregunta-detail',
   templateUrl: './pregunta-detail.component.html',
@@ -14,6 +14,7 @@ export class PreguntaDetailComponent implements OnInit {
   public id:any
   public key:any
   accion:boolean = false
+
   constructor(private route:ActivatedRoute, private formBuilder: FormBuilder, private RestService:RestService) { }
 
   ngOnInit(): void {

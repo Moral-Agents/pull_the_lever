@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { HeaderGuestComponent } from './header-guest/header-guest.component';
 import { FooterComponent } from './footer/footer.component';
 import { PreguntaDetailComponent } from './pregunta-detail/pregunta-detail.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PreguntaDetailComponent } from './pregunta-detail/pregunta-detail.compo
     GameComponent,
     HeaderGuestComponent,
     FooterComponent,
-    PreguntaDetailComponent
+    PreguntaDetailComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
