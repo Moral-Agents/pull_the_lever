@@ -33,9 +33,9 @@ public class UsuarioController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PutMapping("/usuario")
-    public void updateTipoDeUsuario(@RequestBody UsuarioDto usuarioDto) throws GameException{
-        usuarioService.updateTipoDeUsuario(usuarioDto);
+    @PutMapping("/cambioTipoUsuario/{correoUsuario}/{tipoUsuario}")
+    public void updateTipoDeUsuario(@PathVariable String correoUsuario, @PathVariable Character tipoUsuario) throws GameException{
+        usuarioService.updateTipoUsuario(correoUsuario, tipoUsuario);
     }
 
     @ResponseStatus(HttpStatus.OK)

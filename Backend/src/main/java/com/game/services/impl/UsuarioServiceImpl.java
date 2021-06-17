@@ -51,18 +51,18 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public void updateTipoDeUsuario(UsuarioDto usuarioDto) throws GameException {
-        Usuario usuario = usuarioRepository.findById(usuarioDto.getId())
+    public void updateTipoUsuario(String correoUsuario, Character tipoUsuario) throws GameException {
+        Usuario usuario = usuarioRepository.findByCorreo(correoUsuario)
                 .orElseThrow(() -> new NotFoundException("NOT FOUND-404", "USUARIO_NOTFOUND-404"));
+        usuario.setTipo(tipoUsuario);
 
-        usuario.setTipo(usuarioDto.getTipo());
-
-        try{
+        try {
             usuario = usuarioRepository.save(usuario);
         }catch (Exception ex){
             throw new InternalServerErrorException("INTERNAL_SERVER_ERROR", "INTERNAL_SERVER_ERROR");
         }
     }
+
 
     @Override
     public void updateClave(String correoUsuario, String claveUsuario) throws GameException {
