@@ -37,4 +37,10 @@ public class UsuarioController {
     public void updateTipoDeUsuario(@RequestBody UsuarioDto usuarioDto) throws GameException{
         usuarioService.updateTipoDeUsuario(usuarioDto);
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PutMapping("/cambioClave/{correoUsuario}/{claveUsuario}")
+    public void updateClave(@PathVariable String correoUsuario, @PathVariable String claveUsuario) throws GameException{
+        usuarioService.updateClave(correoUsuario, claveUsuario);
+    }
 }

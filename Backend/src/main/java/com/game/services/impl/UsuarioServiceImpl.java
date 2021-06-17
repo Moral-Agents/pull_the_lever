@@ -64,6 +64,19 @@ public class UsuarioServiceImpl implements UsuarioService {
         }
     }
 
+    @Override
+    public void updateClave(String correoUsuario, String claveUsuario) throws GameException {
+        Usuario usuario = usuarioRepository.findByCorreo(correoUsuario)
+                .orElseThrow(() -> new NotFoundException("NOT FOUND-404", "USUARIO_NOTFOUND-404"));
+        usuario.setClave(claveUsuario);
+
+        try {
+            usuario = usuarioRepository.save(usuario);
+        }catch (Exception ex){
+            throw new InternalServerErrorException("INTERNAL_SERVER_ERROR", "INTERNAL_SERVER_ERROR");
+        }
+    }
+
     private Usuario getUsuarioEntity(Long usuarioId) throws GameException {
         return usuarioRepository.findById(usuarioId)
                 .orElseThrow(() -> new NotFoundException("NOT FOUND-404","USUARIO_NOTFOUND-404"));
