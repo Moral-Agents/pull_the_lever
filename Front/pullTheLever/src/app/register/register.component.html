@@ -1,16 +1,33 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-<section id="register">
-    <div>
+<nav class="nav">
+    <div class="nav_container">
+        <div class="nav_box-logo">
+            <a href="/">
+                <img class="nav_logo" src="assets/images/logo.png" alt="Logo">
+            </a>
+        </div>
+        <div class="nav_box-ul">
+            <ul class="nav_ul">
+                <li class="nav_login"><a href="/login">Iniciar Sesión</a></li>
+                <li class="nav_register"><a href="/register">Registrarse</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="register" id="register">
+    <div class="register_container">
         <form [formGroup]="form" (submit)="createUser()">
-            <h1>Registro</h1>
+            <h2 class="register_title">Crear una cuenta gratis</h2>
+            <p class="register_welcome">Te damos la bienvenida a Pull The Lever</p>
             <div>
                 <input type="text" id="name" name="name" placeholder="Nombre" formControlName="nombre">
             </div>
             <div>
-                <input type="text" id="mail" name="mail" placeholder="Correo" formControlName="correo">
+                <input type="email" id="mail" name="mail" placeholder="Correo" formControlName="correo">
             </div>
             <div>
-                <input type="text" id="password" name="password" placeholder="Contraseña" formControlName="clave">
+                <input type="password" id="password" name="password" placeholder="Contraseña" formControlName="clave">
             </div>
             <div>
               <input type="text" id="edad" name="edad" placeholder="Edad" formControlName="edad">
@@ -21,10 +38,12 @@
             <div>
                 <input type="text" id="Género" name="Género" placeholder="Género" formControlName="genero">
             </div>
-            <button>Registrarse</button>
-            <div>
-                <a>Ya tienes cuenta?</a>
+            <button class="register_submit">Registrarse</button>
+            <div class="register_recover">
+                <p>¿Ya estás registrado? <a href="/login">Iniciar Sesión</a></p>
             </div>
         </form>
     </div>
 </section>
+
+<app-footer></app-footer>

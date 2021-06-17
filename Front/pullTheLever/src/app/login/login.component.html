@@ -1,16 +1,38 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-<section id="login">
-  <div>
+<nav class="nav">
+  <div class="nav_container">
+      <div class="nav_box-logo">
+          <a href="/">
+              <img class="nav_logo" src="assets/images/logo.png" alt="Logo">
+          </a>
+      </div>
+      <div class="nav_box-ul">
+          <ul class="nav_ul">
+              <li class="nav_login"><a href="/login">Iniciar Sesión</a></li>
+              <li class="nav_register"><a href="/register">Registrarse</a></li>
+          </ul>
+      </div>
+  </div>
+</nav>
+
+<section class="login" id="login">
+  <div class="login_container">
     <form [formGroup]="form" (submit)="getUsuario()">
-      <h1>Login</h1>
+      <h1 class="login_title">Login</h1>
+      <p class="login_welcome">Por favor, comprueba que estás visitando la URL correcta </p>
       <div>
-        <input type="text" id="mail" name="mail" placeholder="Correo" formControlName="correo">
+        <input type="email" id="mail" name="mail" placeholder="Correo" formControlName="correo">
       </div>
       <div>
-        <input type="text" id="password" name="password" placeholder="Contraseña" formControlName="clave">
+        <input type="password" id="password" name="password" placeholder="Contraseña" formControlName="clave">
       </div>
-      <button>Iniciar Sesión</button>
+      <button class="login_submit">Iniciar Sesión</button>
+      <div class="login_recover">
+        <p>¿No tienes cuenta? <a href="/register">Regístrate</a></p>
+      </div>
+      
     </form>
   </div>
 </section>
 
+<app-footer></app-footer>
