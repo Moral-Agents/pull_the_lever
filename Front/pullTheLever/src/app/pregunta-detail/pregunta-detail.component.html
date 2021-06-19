@@ -12,8 +12,13 @@
                 <li class="dilemmas_views">Visitas: {{pregunta?.visitas}}</li>
                 <li class="dilemmas_date">Fecha: {{pregunta?.fecha_creacion}}</li>
             </ul>
-            <button class="dilemmas_a" (click)="respuesta=0;createRespuesta();">{{pregunta?.opcion_1}}</button>
-            <button class="dilemmas_b" (click)="respuesta=1;createRespuesta();">{{pregunta?.opcion_2}}</button>
+            <div *ngIf="!respuesta">
+                <button class="dilemmas_a" (click)="respuesta=0;createRespuesta();">{{pregunta?.opcion_1}}</button>
+                <button class="dilemmas_b" (click)="respuesta=1;createRespuesta();">{{pregunta?.opcion_2}}</button>
+            </div>
+            <div *ngIf="respuesta">
+                <button class="dilemmas_b" (click)="respuesta=0;createRespuesta();" disabled>Este dilema ya ha sido respondido</button>
+            </div>
         </div>
     </div>
 </div>
