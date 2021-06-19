@@ -47,6 +47,7 @@ public class ComentarioServiceImpl implements ComentarioService {
         comentario.setComentario(createComentarioDto.getComentario());
         comentario.setPregunta(pregunta);
         comentario.setUsuario(usuario);
+        comentario.setFecha_creacion(createComentarioDto.getFecha_creacion());
 
         try {
             comentario=comentarioRepository.save(comentario);
@@ -70,6 +71,7 @@ public class ComentarioServiceImpl implements ComentarioService {
                 .orElseThrow(()-> new NotFoundException("NOT FOUND-404", "COMENTARIO_NOTFOUND-404"));
 
         comentario.setComentario(comentarioDto.getComentario());
+        comentario.setFecha_creacion(comentarioDto.getFecha_creacion());
 
         try {
             comentario = comentarioRepository.save(comentario);

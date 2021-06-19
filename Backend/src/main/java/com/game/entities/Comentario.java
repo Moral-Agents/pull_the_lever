@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(
@@ -29,6 +30,12 @@ public class Comentario {
             columnDefinition = "TEXT"
     )
     private String comentario;
+
+    @Column(
+            name = "fecha_creacion",
+            nullable = false,
+            columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private LocalDateTime fecha_creacion;
 
     @ManyToOne
     @JoinColumn(
