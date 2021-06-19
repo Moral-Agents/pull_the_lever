@@ -13,6 +13,7 @@ export class PreguntaDetailComponent implements OnInit {
   public listComentarios:any = {}
   public id:any
   public key:any
+  public respuesta:any
   accion:boolean = false
 
   constructor(private route:ActivatedRoute, private formBuilder: FormBuilder, private RestService:RestService) { }
@@ -34,6 +35,7 @@ export class PreguntaDetailComponent implements OnInit {
   public createComentarios() {
     this.RestService.post('https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/comentarios', {
         comentario: this.form.value.text,
+        fecha_creacion: "2021-06-19T19:43:32.713Z",
         preguntaId: this.id,
         usuarioId: "1"
       }
@@ -42,6 +44,17 @@ export class PreguntaDetailComponent implements OnInit {
         console.log("Success");
         this.readComentarios(this.id);
       })
+  }
+
+  public createRespuesta(){
+    this.RestService.post('https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/respuestas',{
+      preguntaId:Number(this.id),
+      respuesta: Number(this.respuesta),
+      usuarioId: 1
+    }).subscribe(res => {
+      console.log("Success");
+      
+    })
   }
 
   public readComentarios(id:string) {
@@ -57,6 +70,7 @@ export class PreguntaDetailComponent implements OnInit {
     this.RestService.put(`https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/updateComentarios`, {
       id: id,
       comentario: this.form.value.textUpdate,
+      fecha_creacion: "2021-06-19T19:43:32.713Z",
       preguntaId: this.id,
       usuarioId: "1"
     })

@@ -3,7 +3,7 @@
 <div class="dilemmas">
     <div class="dilemmas_item">
         <div class="dilemmas_left">
-            <img src="https://picsum.photos/600/300" alt="imagen dilema">
+            <img src={{pregunta?.img}} alt="imagen dilema">
         </div>
         <div class="dilemmas_right">
             <h2 class="dilemmas_title">{{pregunta?.nombre}}</h2>
@@ -12,8 +12,8 @@
                 <li class="dilemmas_views">Visitas: {{pregunta?.visitas}}</li>
                 <li class="dilemmas_date">Fecha: {{pregunta?.fecha_creacion}}</li>
             </ul>
-            <a class="dilemmas_a" href="#">Matar a Wilmar</a>
-            <a class="dilemmas_b" href="#">Matar a Stephano</a>
+            <button class="dilemmas_a" (click)="respuesta=0;createRespuesta();">{{pregunta?.opcion_1}}</button>
+            <button class="dilemmas_b" (click)="respuesta=1;createRespuesta();">{{pregunta?.opcion_2}}</button>
         </div>
     </div>
 </div>
