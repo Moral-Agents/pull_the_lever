@@ -11,11 +11,12 @@ export class GameComponent implements OnInit {
   public form!: FormGroup;
   public randomId!:number;
   public listPreguntas:any = {}
+  public userId:any
   constructor(private RestService:RestService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     // Si hay error de control access habilitar CORS
-
+    this.userId = localStorage.getItem("accessToken"); 
     this.readPreguntas();
     this.form = this.formBuilder.group({
       text:['']

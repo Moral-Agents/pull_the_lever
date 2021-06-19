@@ -12,6 +12,7 @@ import { HeaderGuestComponent } from './header-guest/header-guest.component';
 import { FooterComponent } from './footer/footer.component';
 import { PreguntaDetailComponent } from './pregunta-detail/pregunta-detail.component';
 import { LoginComponent } from './login/login.component';
+import { HeaderUserComponent } from './header-user/header-user.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LoginComponent } from './login/login.component';
     HeaderGuestComponent,
     FooterComponent,
     PreguntaDetailComponent,
-    LoginComponent
+    LoginComponent,
+    HeaderUserComponent
   ],
   imports: [
     BrowserModule,

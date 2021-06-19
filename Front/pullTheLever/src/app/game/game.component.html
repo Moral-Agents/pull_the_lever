@@ -1,5 +1,5 @@
-<app-header-guest></app-header-guest>
-
+<app-header-guest *ngIf="!userId"></app-header-guest>
+<app-header-user *ngIf="userId"></app-header-user>
 <div class="start">
     <div [ngStyle]="{'background':'linear-gradient(
         rgba(0, 0, 0, 0.7), 

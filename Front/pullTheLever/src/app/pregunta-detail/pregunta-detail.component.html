@@ -1,5 +1,5 @@
-<app-header-guest></app-header-guest>
-
+<app-header-guest *ngIf="!userId"></app-header-guest>
+<app-header-user *ngIf="userId"></app-header-user>
 <div class="dilemmas">
     <div class="dilemmas_item">
         <div class="dilemmas_left">
@@ -48,7 +48,7 @@
             </div>
             <div *ngIf="accion == false || comentario.id != key">
                 <p>{{comentario?.comentario}}</p>
-                <p>24 Mar 2021</p>
+                <p>{{comentario?.fecha_creacion}}</p>
             </div>
             <div *ngIf="accion == true && comentario.id == key">
                 <form [formGroup]="form"  (submit)="updateComentarios(comentario.id)">

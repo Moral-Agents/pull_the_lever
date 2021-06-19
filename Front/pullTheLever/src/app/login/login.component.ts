@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
         data => {
           let user = JSON.parse(JSON.stringify(data)).data
           localStorage.setItem("accessToken", user.id)
+          localStorage.setItem("userName",user.nombre)
           this.router.navigate(["../game"])
       },
       error => console.log(error)

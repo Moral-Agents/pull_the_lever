@@ -14,6 +14,7 @@ export class PreguntaDetailComponent implements OnInit {
   public id:any
   public key:any
   public respuesta:any
+  public userId:any
   accion:boolean = false
 
   constructor(private route:ActivatedRoute, private formBuilder: FormBuilder, private RestService:RestService) { }
@@ -25,6 +26,7 @@ export class PreguntaDetailComponent implements OnInit {
     })
     this.getData(this.id);
     this.readComentarios(this.id);
+    this.userId = localStorage.getItem("accessToken");
     this.form = this.formBuilder.group({
       text:[''],
       textUpdate:['']
@@ -37,7 +39,7 @@ export class PreguntaDetailComponent implements OnInit {
         comentario: this.form.value.text,
         fecha_creacion: "2021-06-19T19:43:32.713Z",
         preguntaId: this.id,
-        usuarioId: "1"
+        usuarioId: this.userId
       }
     )
       .subscribe(respuesta => {
@@ -50,7 +52,7 @@ export class PreguntaDetailComponent implements OnInit {
     this.RestService.post('https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/respuestas',{
       preguntaId:Number(this.id),
       respuesta: Number(this.respuesta),
-      usuarioId: 1
+      usuarioId: this.userId
     }).subscribe(res => {
       console.log("Success");
       
@@ -72,7 +74,7 @@ export class PreguntaDetailComponent implements OnInit {
       comentario: this.form.value.textUpdate,
       fecha_creacion: "2021-06-19T19:43:32.713Z",
       preguntaId: this.id,
-      usuarioId: "1"
+      usuarioId: this.userId
     })
       .subscribe(response => {
         console.log(response);
