@@ -55,10 +55,10 @@ public class RespuestaServiceImpl implements RespuestaService {
         respuesta.setUsuario(usuario);
 
         if(respuesta.getRespuesta() == 0){
-            pregunta.setCant_no(pregunta.getCant_no() + 1);
+            pregunta.setCant_1(pregunta.getCant_1() + 1);
         }
         if(respuesta.getRespuesta() == 1){
-            pregunta.setCant_si(pregunta.getCant_si() + 1);
+            pregunta.setCant_2(pregunta.getCant_2() + 1);
         }
 
         try {

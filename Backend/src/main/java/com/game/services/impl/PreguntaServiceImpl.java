@@ -34,9 +34,11 @@ public class PreguntaServiceImpl implements PreguntaService {
         Pregunta pregunta = new Pregunta();
         pregunta.setNombre(createPreguntaDto.getNombre());
         pregunta.setDescripcion(createPreguntaDto.getDescripcion());
+        pregunta.setOpcion_1(createPreguntaDto.getOpcion_1());
+        pregunta.setOpcion_2(createPreguntaDto.getOpcion_2());
         pregunta.setImg("https://picsum.photos/100");
-        pregunta.setCant_si(0l);
-        pregunta.setCant_no(0l);
+        pregunta.setCant_1(0l);
+        pregunta.setCant_2(0l);
         pregunta.setVisitas(0l);
         pregunta.setFecha_creacion(createPreguntaDto.getFecha_creacion());
         try {
@@ -75,6 +77,11 @@ public class PreguntaServiceImpl implements PreguntaService {
 
         pregunta.setNombre(preguntaDto.getNombre());
         pregunta.setDescripcion(preguntaDto.getDescripcion());
+        pregunta.setOpcion_1(preguntaDto.getOpcion_1());
+        pregunta.setOpcion_2(preguntaDto.getOpcion_2());
+        pregunta.setVisitas(0l);
+        pregunta.setCant_1(0l);
+        pregunta.setCant_2(0l);
 
         try{
             pregunta = preguntaRepository.save(pregunta);

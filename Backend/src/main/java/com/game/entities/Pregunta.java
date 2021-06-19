@@ -52,18 +52,32 @@ public class Pregunta {
     private String img;
 
     @Column(
-            name = "cant_si",
+            name = "opcion_1",
             nullable = false,
-            columnDefinition = "BIGINT"
+            columnDefinition = "TEXT"
     )
-    private Long cant_si;
+    private String opcion_1;
 
     @Column(
-            name = "cant_no",
+            name = "opcion_2",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
+    private String opcion_2;
+
+    @Column(
+            name = "cant_1",
             nullable = false,
             columnDefinition = "BIGINT"
     )
-    private Long cant_no;
+    private Long cant_1;
+
+    @Column(
+            name = "cant_2",
+            nullable = false,
+            columnDefinition = "BIGINT"
+    )
+    private Long cant_2;
 
     @Column(
             name = "visitas",
