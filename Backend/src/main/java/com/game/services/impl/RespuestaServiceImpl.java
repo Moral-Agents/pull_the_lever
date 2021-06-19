@@ -47,9 +47,9 @@ public class RespuestaServiceImpl implements RespuestaService {
         }
 
         Respuesta respuesta = new Respuesta();
-        respuesta.setEdad(createRespuestaDto.getEdad());
-        respuesta.setNacionalidad(createRespuestaDto.getNacionalidad());
-        respuesta.setGenero(createRespuestaDto.getGenero());
+        respuesta.setEdad(usuario.getEdad());
+        respuesta.setNacionalidad(usuario.getNacionalidad());
+        respuesta.setGenero(usuario.getGenero());
         respuesta.setRespuesta(createRespuestaDto.getRespuesta());
         respuesta.setPregunta(pregunta);
         respuesta.setUsuario(usuario);
