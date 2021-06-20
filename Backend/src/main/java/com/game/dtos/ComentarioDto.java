@@ -13,4 +13,6 @@ public class ComentarioDto {
     private LocalDateTime fecha_creacion;
     private Long preguntaId;
     private Long usuarioId;
+    private String autor;
+    private String img;
 }

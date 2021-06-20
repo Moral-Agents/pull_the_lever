@@ -15,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,7 +41,8 @@ public class PreguntaServiceImpl implements PreguntaService {
         pregunta.setCant_1(0l);
         pregunta.setCant_2(0l);
         pregunta.setVisitas(0l);
-        pregunta.setFecha_creacion(createPreguntaDto.getFecha_creacion());
+        pregunta.setFecha_creacion(LocalDateTime.now());
+        pregunta.setAutor(createPreguntaDto.getAutor());
         try {
             pregunta = preguntaRepository.save(pregunta);
         }catch (Exception ex){

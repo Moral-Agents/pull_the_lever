@@ -18,4 +18,5 @@ public class PreguntaDto {
     private Long cant_2;
     private Long visitas;
     private LocalDateTime fecha_creacion;
+    private String autor;
 }

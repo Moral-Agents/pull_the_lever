@@ -12,6 +12,5 @@ public class CreatePreguntaDto {
     private String descripcion;
     private String opcion_1;
     private String opcion_2;
-    private String img;
-    private LocalDateTime fecha_creacion;
+    private String autor;
 }

@@ -37,6 +37,20 @@ public class Comentario {
             columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private LocalDateTime fecha_creacion;
 
+    @Column(
+            name = "autor",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
+    private String autor;
+
+    @Column(
+            name = "img",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
+    private String img;
+
     @ManyToOne
     @JoinColumn(
             name = "pregunta_id",

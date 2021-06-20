@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.transaction.Transactional;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -47,7 +48,9 @@ public class ComentarioServiceImpl implements ComentarioService {
         comentario.setComentario(createComentarioDto.getComentario());
         comentario.setPregunta(pregunta);
         comentario.setUsuario(usuario);
-        comentario.setFecha_creacion(createComentarioDto.getFecha_creacion());
+        comentario.setFecha_creacion(LocalDateTime.now());
+        comentario.setAutor(usuario.getNombre());
+        comentario.setImg(usuario.getImg());
 
         try {
             comentario=comentarioRepository.save(comentario);
