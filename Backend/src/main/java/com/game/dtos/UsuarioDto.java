@@ -13,4 +13,5 @@ public class UsuarioDto {
     private String nacionalidad;
     private Character genero;
     private Character tipo;
+    private String img;
 }

@@ -85,6 +85,13 @@ public class Usuario {
         )
         private Character tipo;
 
+        @Column(
+                name = "img",
+                nullable = false,
+                columnDefinition = "TEXT"
+        )
+        private String img;
+
         @OneToMany(
                 mappedBy = "usuario",
                 cascade = {CascadeType.PERSIST, CascadeType.REMOVE},

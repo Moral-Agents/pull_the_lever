@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 @Setter
 public class CreateComentarioDto {
     private String comentario;
-    private LocalDateTime fecha_creacion;
     private Long preguntaId;
     private Long usuarioId;
 }

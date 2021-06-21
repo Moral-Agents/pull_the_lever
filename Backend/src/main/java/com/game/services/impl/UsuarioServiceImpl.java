@@ -33,6 +33,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         usuario.setNacionalidad(createUsuarioDto.getNacionalidad());
         usuario.setGenero(createUsuarioDto.getGenero());
         usuario.setTipo(createUsuarioDto.getTipo());
+        usuario.setImg("https://picsum.photos/100");
 
         try {
             usuario=usuarioRepository.save(usuario);

@@ -92,6 +92,12 @@ public class Pregunta {
             columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private LocalDateTime fecha_creacion;
 
+    @Column(
+            name = "autor",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
+    private String autor;
 
     @OneToMany(
             mappedBy = "pregunta",
