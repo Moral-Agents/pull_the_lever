@@ -81,7 +81,7 @@ public class PreguntaServiceImpl implements PreguntaService {
         pregunta.setDescripcion(preguntaDto.getDescripcion());
         pregunta.setOpcion_1(preguntaDto.getOpcion_1());
         pregunta.setOpcion_2(preguntaDto.getOpcion_2());
-        pregunta.setFecha_creacion(preguntaDto.getFecha_creacion());
+        pregunta.setFecha_creacion(LocalDateTime.now());
         pregunta.setVisitas(0l);
         pregunta.setCant_1(0l);
         pregunta.setCant_2(0l);
