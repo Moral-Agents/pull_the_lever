@@ -38,12 +38,13 @@ public class PreguntaServiceImpl implements PreguntaService {
         pregunta.setDescripcion(createPreguntaDto.getDescripcion());
         pregunta.setOpcion_1(createPreguntaDto.getOpcion_1());
         pregunta.setOpcion_2(createPreguntaDto.getOpcion_2());
-        pregunta.setImg("https://picsum.photos/100");
+        pregunta.setImg("https://picsum.photos/600/300");
         pregunta.setCant_1(0l);
         pregunta.setCant_2(0l);
         pregunta.setVisitas(0l);
         pregunta.setFecha_creacion(LocalDateTime.now());
         pregunta.setAutor(createPreguntaDto.getAutor());
+
         try {
             pregunta = preguntaRepository.save(pregunta);
         }catch (Exception ex){
