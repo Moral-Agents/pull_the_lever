@@ -2,6 +2,7 @@ package com.game.services.impl;
 
 import com.game.dtos.CreatePreguntaDto;
 import com.game.dtos.PreguntaDto;
+import com.game.dtos.UpdatePreguntaDto;
 import com.game.entities.Pregunta;
 import com.game.exceptions.GameException;
 import com.game.exceptions.InternalServerErrorException;
@@ -73,14 +74,14 @@ public class PreguntaServiceImpl implements PreguntaService {
     }
 
     @Override
-    public void updatePregunta(PreguntaDto preguntaDto) throws GameException {
-        Pregunta pregunta = preguntaRepository.findById(preguntaDto.getId())
+    public void updatePregunta(UpdatePreguntaDto updatePreguntaDto) throws GameException {
+        Pregunta pregunta = preguntaRepository.findById(updatePreguntaDto.getId())
                 .orElseThrow(() -> new NotFoundException("NOT FOUND-404", "PREGUNTA_NOTFOUND-404"));
 
-        pregunta.setNombre(preguntaDto.getNombre());
-        pregunta.setDescripcion(preguntaDto.getDescripcion());
-        pregunta.setOpcion_1(preguntaDto.getOpcion_1());
-        pregunta.setOpcion_2(preguntaDto.getOpcion_2());
+        pregunta.setNombre(updatePreguntaDto.getNombre());
+        pregunta.setDescripcion(updatePreguntaDto.getDescripcion());
+        pregunta.setOpcion_1(updatePreguntaDto.getOpcion_1());
+        pregunta.setOpcion_2(updatePreguntaDto.getOpcion_2());
         pregunta.setFecha_creacion(LocalDateTime.now());
         pregunta.setVisitas(0l);
         pregunta.setCant_1(0l);
