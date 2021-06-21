@@ -20,14 +20,16 @@
   justify-content: flex-end;
 }
 
-.nav_profile a {
+.nav_profile span {
   margin-right: 1rem;
 }
 
-.nav_profile a,
-.nav_logout a {
+.nav_profile span,
+.nav_logout span {
   color: #fff;
   font-family: "Poppins", sans-serif !important;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 900;
+  font-size: 1.2rem;
+  cursor: pointer;
 }

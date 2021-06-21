@@ -27,6 +27,7 @@ export class PreguntaDetailComponent implements OnInit {
     this.getData(this.id);
     this.readComentarios(this.id);
     this.userId = localStorage.getItem("accessToken");
+    console.log("TOKEN: " + this.userId);
     this.form = this.formBuilder.group({
       text:[''],
       textUpdate:['']
@@ -35,9 +36,9 @@ export class PreguntaDetailComponent implements OnInit {
   }
 
   public createComentarios() {
+    console.log("USER ID: " + this.userId)
     this.RestService.post('https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/comentarios', {
         comentario: this.form.value.text,
-        fecha_creacion: "2021-06-19T19:43:32.713Z",
         preguntaId: this.id,
         usuarioId: this.userId
       }
@@ -72,7 +73,6 @@ export class PreguntaDetailComponent implements OnInit {
     this.RestService.put(`https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/updateComentarios`, {
       id: id,
       comentario: this.form.value.textUpdate,
-      fecha_creacion: "2021-06-19T19:43:32.713Z",
       preguntaId: this.id,
       usuarioId: this.userId
     })

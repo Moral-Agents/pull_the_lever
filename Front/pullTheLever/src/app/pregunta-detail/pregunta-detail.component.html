@@ -36,11 +36,11 @@
     </form>
     <div class="comment" *ngFor="let comentario of listComentarios">
         <div class="comment_left">
-            <img src="https://picsum.photos/100"/>
+            <img src={{comentario?.img}}/>
         </div>
         <div class="comment_right">
             <div class="comment_header">
-                <h4>Vitalik Buterin </h4>
+                <h4>{{comentario?.autor}} </h4>
                 <div class="comment_actions" *ngIf="accion == false">
                     <a class="comment_icon-update" (click) ="accion = true;key = comentario.id"><i class="lni lni-pencil"></i></a>
                     <a (click)="deleteComentario(comentario.id)"><i class="lni lni-trash"></i></a>
