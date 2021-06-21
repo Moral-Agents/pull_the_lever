@@ -41,7 +41,7 @@
         <div class="comment_right">
             <div class="comment_header">
                 <h4>{{comentario?.autor}} </h4>
-                <div class="comment_actions" *ngIf="accion == false">
+                <div class="comment_actions" *ngIf="accion == false && comentario.usuarioId == userId">
                     <a class="comment_icon-update" (click) ="accion = true;key = comentario.id"><i class="lni lni-pencil"></i></a>
                     <a (click)="deleteComentario(comentario.id)"><i class="lni lni-trash"></i></a>
                 </div>
