@@ -1,9 +1,6 @@
 package com.game.controllers;
 
-import com.game.dtos.CreatePreguntaDto;
-import com.game.dtos.CreateUsuarioDto;
-import com.game.dtos.PreguntaDto;
-import com.game.dtos.UsuarioDto;
+import com.game.dtos.*;
 import com.game.entities.Pregunta;
 import com.game.exceptions.GameException;
 import com.game.responses.GameResponse;
@@ -45,8 +42,8 @@ public class PreguntaController {
 
     @ResponseStatus(HttpStatus.OK)
     @PutMapping("/updatePregunta")
-    public void updatePregunta(@RequestBody PreguntaDto preguntaDto) throws GameException{
-        preguntaService.updatePregunta(preguntaDto);
+    public void updatePregunta(@RequestBody UpdatePreguntaDto updatePreguntaDto) throws GameException{
+        preguntaService.updatePregunta(updatePreguntaDto);
     }
 
     @DeleteMapping("/deletePregunta/{preguntaId}")

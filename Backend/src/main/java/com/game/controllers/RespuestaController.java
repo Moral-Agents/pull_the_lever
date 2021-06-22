@@ -21,9 +21,9 @@ public class RespuestaController {
 
    @ResponseStatus(HttpStatus.OK)
    @GetMapping("/respuestas/{preguntaId}")
-   public GameResponse<List<RespuestaDto>> getRespuestaByPreguntaId(@PathVariable Long preguntaId) throws GameException{
+   public GameResponse<List<RespuestaDto>> getRespuestasByPreguntaId(@PathVariable Long preguntaId) throws GameException{
        return new GameResponse<>("Success",  String.valueOf(HttpStatus.OK), "OK",
-               respuestaService.getRespuestaByPreguntaId(preguntaId));
+               respuestaService.getRespuestasByPreguntaId(preguntaId));
    }
 
    @ResponseStatus(HttpStatus.OK)
@@ -31,5 +31,17 @@ public class RespuestaController {
    public GameResponse<RespuestaDto> createRespuesta(@RequestBody CreateRespuestaDto createRespuestaDto) throws GameException{
         return new GameResponse<>("Success", String.valueOf(HttpStatus.OK), "OK",
                 respuestaService.createRespuesta(createRespuestaDto));
+   }
+
+   @ResponseStatus(HttpStatus.OK)
+   @GetMapping("/respuestas/{preguntaId}/{usuarioId}")
+   public GameResponse<RespuestaDto> getRespuestaByPreguntaIdAndUsuarioId(@PathVariable Long preguntaId, @PathVariable Long usuarioId) throws GameException{
+      return new GameResponse<>("Success", String.valueOf(HttpStatus.OK), "OK",
+              respuestaService.getRespuestaByPreguntaIdAndUsuarioId(preguntaId, usuarioId));
+   }
+
+   @DeleteMapping("/deleteRespuestas/{preguntaId}")
+   public void deleteRespuestasByPreguntaId(@PathVariable Long preguntaId){
+      respuestaService.deleteRespuestaByPreguntaId(preguntaId);
    }
 }

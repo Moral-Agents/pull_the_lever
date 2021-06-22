@@ -12,6 +12,7 @@ import com.game.repositories.ComentarioRepository;
 import com.game.repositories.PreguntaRepository;
 import com.game.repositories.UsuarioRepository;
 import com.game.services.ComentarioService;
+import org.apache.tomcat.jni.Local;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -69,12 +70,12 @@ public class ComentarioServiceImpl implements ComentarioService {
     }
 
     @Override
-    public void updateComentario(ComentarioDto comentarioDto) throws GameException {
-        Comentario comentario = comentarioRepository.findById(comentarioDto.getId())
+    public void updateComentarioById(Long comentarioId, String comentarioDescripcion) throws GameException {
+        Comentario comentario = comentarioRepository.findById(comentarioId)
                 .orElseThrow(()-> new NotFoundException("NOT FOUND-404", "COMENTARIO_NOTFOUND-404"));
 
-        comentario.setComentario(comentarioDto.getComentario());
-        comentario.setFecha_creacion(comentarioDto.getFecha_creacion());
+        comentario.setComentario(comentarioDescripcion);
+        comentario.setFecha_creacion(LocalDateTime.now());
 
         try {
             comentario = comentarioRepository.save(comentario);

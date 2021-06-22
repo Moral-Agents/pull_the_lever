@@ -71,9 +71,25 @@ public class RespuestaServiceImpl implements RespuestaService {
     }
 
     @Override
-    public List<RespuestaDto> getRespuestaByPreguntaId(Long preguntaId) throws GameException{
+    public List<RespuestaDto> getRespuestasByPreguntaId(Long preguntaId) throws GameException{
         List<Respuesta> respuestasEntity = respuestaRepository.findAllByPreguntaId(preguntaId);
         return respuestasEntity.stream().map(respuesta -> modelMapper.map(respuesta, RespuestaDto.class)).collect(Collectors.toList());
+    }
+
+    @Override
+    public RespuestaDto getRespuestaByPreguntaIdAndUsuarioId(Long preguntaId, Long usuarioId) throws GameException {
+        Respuesta respuesta = respuestaRepository.findByPreguntaIdAndUsuarioId(preguntaId, usuarioId)
+                .orElseThrow(() -> new NotFoundException("NOT FOUND-404", "RESPUESTA_NOTFOUND-404"));
+
+        return modelMapper.map(getRespuestaEntity(respuesta.getId()), RespuestaDto.class);
+    }
+
+    @Override
+    public void deleteRespuestaByPreguntaId(Long preguntaId) {
+        List<Respuesta> respuestas = respuestaRepository.findAllByPreguntaId(preguntaId);
+        for (int i = 0; i < respuestas.size(); i++){
+            respuestaRepository.deleteById(respuestas.get(i).getId());
+        }
     }
 
     private Respuesta getRespuestaEntity(Long preguntaId) throws GameException{

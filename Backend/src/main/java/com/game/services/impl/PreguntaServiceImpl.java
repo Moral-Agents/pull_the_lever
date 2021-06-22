@@ -2,6 +2,7 @@ package com.game.services.impl;
 
 import com.game.dtos.CreatePreguntaDto;
 import com.game.dtos.PreguntaDto;
+import com.game.dtos.UpdatePreguntaDto;
 import com.game.entities.Pregunta;
 import com.game.exceptions.GameException;
 import com.game.exceptions.InternalServerErrorException;
@@ -28,7 +29,6 @@ public class PreguntaServiceImpl implements PreguntaService {
     private PreguntaRepository preguntaRepository;
 
 
-
     @Transactional
     @Override
     public PreguntaDto createPregunta(CreatePreguntaDto createPreguntaDto) throws GameException{
@@ -37,12 +37,13 @@ public class PreguntaServiceImpl implements PreguntaService {
         pregunta.setDescripcion(createPreguntaDto.getDescripcion());
         pregunta.setOpcion_1(createPreguntaDto.getOpcion_1());
         pregunta.setOpcion_2(createPreguntaDto.getOpcion_2());
-        pregunta.setImg("https://picsum.photos/100");
+        pregunta.setImg("https://picsum.photos/600/300");
         pregunta.setCant_1(0l);
         pregunta.setCant_2(0l);
         pregunta.setVisitas(0l);
         pregunta.setFecha_creacion(LocalDateTime.now());
         pregunta.setAutor(createPreguntaDto.getAutor());
+
         try {
             pregunta = preguntaRepository.save(pregunta);
         }catch (Exception ex){
@@ -73,15 +74,15 @@ public class PreguntaServiceImpl implements PreguntaService {
     }
 
     @Override
-    public void updatePregunta(PreguntaDto preguntaDto) throws GameException {
-        Pregunta pregunta = preguntaRepository.findById(preguntaDto.getId())
+    public void updatePregunta(UpdatePreguntaDto updatePreguntaDto) throws GameException {
+        Pregunta pregunta = preguntaRepository.findById(updatePreguntaDto.getId())
                 .orElseThrow(() -> new NotFoundException("NOT FOUND-404", "PREGUNTA_NOTFOUND-404"));
 
-        pregunta.setNombre(preguntaDto.getNombre());
-        pregunta.setDescripcion(preguntaDto.getDescripcion());
-        pregunta.setOpcion_1(preguntaDto.getOpcion_1());
-        pregunta.setOpcion_2(preguntaDto.getOpcion_2());
-        pregunta.setFecha_creacion(preguntaDto.getFecha_creacion());
+        pregunta.setNombre(updatePreguntaDto.getNombre());
+        pregunta.setDescripcion(updatePreguntaDto.getDescripcion());
+        pregunta.setOpcion_1(updatePreguntaDto.getOpcion_1());
+        pregunta.setOpcion_2(updatePreguntaDto.getOpcion_2());
+        pregunta.setFecha_creacion(LocalDateTime.now());
         pregunta.setVisitas(0l);
         pregunta.setCant_1(0l);
         pregunta.setCant_2(0l);

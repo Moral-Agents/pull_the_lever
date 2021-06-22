@@ -35,9 +35,9 @@ public class ComentarioController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PutMapping("/updateComentarios")
-    public void updateComentario(@RequestBody ComentarioDto comentarioDto) throws GameException{
-        comentarioService.updateComentario(comentarioDto);
+    @PutMapping("/updateComentarios/{comentarioId}/{comentarioDescripcion}")
+    public void updateComentarioById(@PathVariable Long comentarioId, @PathVariable String comentarioDescripcion) throws GameException{
+        comentarioService.updateComentarioById(comentarioId, comentarioDescripcion);
     }
 
     @DeleteMapping("/deleteComentarios/{comentarioId}")
