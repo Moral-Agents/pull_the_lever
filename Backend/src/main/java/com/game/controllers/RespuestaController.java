@@ -39,4 +39,9 @@ public class RespuestaController {
       return new GameResponse<>("Success", String.valueOf(HttpStatus.OK), "OK",
               respuestaService.getRespuestaByPreguntaIdAndUsuarioId(preguntaId, usuarioId));
    }
+
+   @DeleteMapping("/deleteRespuestas/{preguntaId}")
+   public void deleteRespuestasByPreguntaId(@PathVariable Long preguntaId){
+      respuestaService.deleteRespuestaByPreguntaId(preguntaId);
+   }
 }

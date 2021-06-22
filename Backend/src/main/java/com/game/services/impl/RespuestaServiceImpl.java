@@ -84,6 +84,14 @@ public class RespuestaServiceImpl implements RespuestaService {
         return modelMapper.map(getRespuestaEntity(respuesta.getId()), RespuestaDto.class);
     }
 
+    @Override
+    public void deleteRespuestaByPreguntaId(Long preguntaId) {
+        List<Respuesta> respuestas = respuestaRepository.findAllByPreguntaId(preguntaId);
+        for (int i = 0; i < respuestas.size(); i++){
+            respuestaRepository.deleteById(respuestas.get(i).getId());
+        }
+    }
+
     private Respuesta getRespuestaEntity(Long preguntaId) throws GameException{
         return respuestaRepository.findById(preguntaId)
                 .orElseThrow(()-> new NotFoundException("NOT-401-1", "RESPUESTA_NOT_FOUND"));

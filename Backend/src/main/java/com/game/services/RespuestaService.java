@@ -10,4 +10,6 @@ public interface RespuestaService {
     RespuestaDto createRespuesta(CreateRespuestaDto createRespuestaDto) throws GameException;
     List<RespuestaDto> getRespuestasByPreguntaId(Long preguntaId) throws GameException;
     RespuestaDto getRespuestaByPreguntaIdAndUsuarioId(Long preguntaId, Long usuarioId) throws GameException;
+
+    void deleteRespuestaByPreguntaId(Long preguntaId);
 }

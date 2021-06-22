@@ -29,7 +29,6 @@ public class PreguntaServiceImpl implements PreguntaService {
     private PreguntaRepository preguntaRepository;
 
 
-
     @Transactional
     @Override
     public PreguntaDto createPregunta(CreatePreguntaDto createPreguntaDto) throws GameException{
