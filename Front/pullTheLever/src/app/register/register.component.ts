@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserInterface } from "../models/UserInterface";
 import { RestService } from "../rest.service";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -11,13 +11,13 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 export class RegisterComponent implements OnInit {
   public form!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private RestService: RestService) { }
+  constructor(private formBuilder: FormBuilder, private RestService: RestService, private router: Router) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      nombre:[''],
-      correo:[''],
-      clave:[''],
+      nombre:['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
+      correo:['', [Validators.required, Validators.email]],
+      clave:['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
       edad:[''],
       nacionalidad:[''],
       genero:[''],
@@ -37,6 +37,7 @@ export class RegisterComponent implements OnInit {
     })
       .subscribe(response => {
         console.log(response);
+        this.router.navigate(["../login"])
       })
   }
 }

@@ -21,13 +21,21 @@
             <h2 class="register_title">Crear una cuenta gratis</h2>
             <p class="register_welcome">Te damos la bienvenida a Pull The Lever</p>
             <div>
-                <input type="text" id="name" name="name" placeholder="Nombre" formControlName="nombre">
+              <input type="text" id="name" name="name" placeholder="Nombre de usuario" formControlName="nombre">
+              <span *ngIf="form.controls['nombre'].hasError('required') && form.controls['nombre'].touched">Requerido</span>
+              <span *ngIf="form.controls['nombre'].hasError('minlength') && form.controls['nombre'].touched">Minimo</span>
+              <span *ngIf="form.controls['nombre'].hasError('maxlength') && form.controls['nombre'].touched">Maximo</span>
             </div>
             <div>
-                <input type="email" id="mail" name="mail" placeholder="Correo" formControlName="correo">
+              <input type="email" id="mail" name="mail" placeholder="Correo" formControlName="correo">
+              <span *ngIf="form.controls['correo'].hasError('required') && form.controls['correo'].touched">Requerido</span>
+              <span *ngIf="form.controls['correo'].hasError('email') && form.controls['correo'].touched">Invalido</span>
             </div>
             <div>
-                <input type="password" id="password" name="password" placeholder="Contraseña" formControlName="clave">
+              <input type="password" id="password" name="password" placeholder="Contraseña" formControlName="clave">
+              <span *ngIf="form.controls['clave'].hasError('required') && form.controls['clave'].touched">Requerido</span>
+              <span *ngIf="form.controls['clave'].hasError('minlength') && form.controls['clave'].touched">Minimo</span>
+              <span *ngIf="form.controls['clave'].hasError('maxlength') && form.controls['clave'].touched">Maximo</span>
             </div>
             <div>
               <input type="text" id="edad" name="edad" placeholder="Edad" formControlName="edad">
@@ -38,7 +46,7 @@
             <div>
                 <input type="text" id="Género" name="Género" placeholder="Género" formControlName="genero">
             </div>
-            <button class="register_submit">Registrarse</button>
+            <button class="register_submit" [disabled]="form.invalid">Registrarse</button>
             <div class="register_recover">
                 <p>¿Ya estás registrado? <a href="/login">Iniciar Sesión</a></p>
             </div>
