@@ -17,7 +17,8 @@
                 <button class="dilemmas_b" (click)="respuesta=1;createRespuesta();">{{pregunta?.opcion_2}}</button>
             </div>
             <div *ngIf="respuesta">
-                <button class="dilemmas_b" (click)="respuesta=0;createRespuesta();" disabled>Este dilema ya ha sido respondido</button>
+                <button class="dilemmas_a" disabled>63% </button>
+                <button class="dilemmas_b" disabled>32%</button>
             </div>
         </div>
     </div>

@@ -70,11 +70,7 @@ export class PreguntaDetailComponent implements OnInit {
   }
 
   public updateComentarios(id:string) {
-    this.RestService.put(`https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/updateComentarios`, {
-      id: id,
-      comentario: this.form.value.textUpdate,
-      preguntaId: this.id,
-      usuarioId: this.userId
+    this.RestService.put(`https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/updateComentarios/${id}/${this.form.value.textUpdate}`, {
     })
       .subscribe(response => {
         console.log(response);
