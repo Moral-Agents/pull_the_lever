@@ -1,1 +1,35 @@
-<p>plans works!</p>
+<app-header-guest *ngIf="!userId"></app-header-guest>
+<app-header-user *ngIf="userId"></app-header-user>
+
+<section id="pricing" style="margin: -5rem auto;" class="pricing-area ">
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <div class="col-lg-4 col-md-7 col-sm-9">
+                <div class="pricing-style mt-30">
+                    <div class="pricing-icon text-center">
+                        <img src="assets/images/pro.svg" alt="">
+                    </div>
+                    <div class="pricing-header text-center">
+                        <h5 class="sub-title">Pro</h5>
+                        <p class="month"><span class="price">$ 15</span></p>
+                    </div>
+                    <div class="pricing-list">
+                        <ul>
+                            <li><i class="lni lni-check-mark-circle"></i> Posibilidad de proponer dilemas morales</li>
+                            <li><i class="lni lni-check-mark-circle"></i> Acceso total a las estadísticas de los
+                                resultados</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-btn rounded-buttons text-center">
+                        <a class="main-btn rounded-one" href="#">Comenzar</a>
+                    </div>
+                </div> <!-- pricing style one -->
+            </div>
+
+
+        </div> <!-- row -->
+    </div> <!-- container -->
+</section>
+
+<app-footer></app-footer>

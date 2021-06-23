@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./plans.component.css']
 })
 export class PlansComponent implements OnInit {
-
+  public userId: any
   constructor() { }
 
   ngOnInit(): void {
+    this.userId = localStorage.getItem("accessToken");
   }
 
 }
