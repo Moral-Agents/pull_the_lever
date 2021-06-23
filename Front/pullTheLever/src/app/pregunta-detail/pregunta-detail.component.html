@@ -17,8 +17,8 @@
                 <button class="dilemmas_b" (click)="respuesta=1;createRespuesta();">{{pregunta?.opcion_2}}</button>
             </div>
             <div *ngIf="respuesta">
-                <button class="dilemmas_a" disabled>63% </button>
-                <button class="dilemmas_b" disabled>32%</button>
+                <button class="dilemmas_a" disabled>{{pregunta?.cant_1 / (pregunta?.cant_1 + pregunta?.cant_2) * 100}}% </button>
+                <button class="dilemmas_b" disabled>{{pregunta?.cant_2 / (pregunta?.cant_1 + pregunta?.cant_2)* 100}}%</button>
             </div>
         </div>
     </div>

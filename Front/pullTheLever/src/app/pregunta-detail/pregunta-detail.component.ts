@@ -32,8 +32,18 @@ export class PreguntaDetailComponent implements OnInit {
       text:[''],
       textUpdate:['']
     })
+    this.getRespuesta();
 
   }
+
+  public getRespuesta(){
+    this.RestService.get(`https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/respuestas/${this.id}/${this.userId}`)
+    .subscribe(response => {
+      this.respuesta = JSON.parse(JSON.stringify(response)).data;
+      console.log("RESPUESTA: " + this.respuesta);
+    })
+  }
+
 
   public createComentarios() {
     console.log("USER ID: " + this.userId)
