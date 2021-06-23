@@ -30,7 +30,10 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("userName",user.nombre)
           this.router.navigate(["../game"])
       },
-      error => console.log(error)
-      )
+      error => {
+          console.log(error)
+          alert("Usuario o contrasseña incorrecta")
+        }
+        )
   }
 }

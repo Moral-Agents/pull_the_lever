@@ -18,9 +18,9 @@ export class RegisterComponent implements OnInit {
       nombre:['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
       correo:['', [Validators.required, Validators.email]],
       clave:['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
-      edad:[''],
-      nacionalidad:[''],
-      genero:[''],
+      edad:['', Validators.required],
+      nacionalidad:['', Validators.required],
+      genero:['', Validators.required],
       }
     )
   }
@@ -30,14 +30,24 @@ export class RegisterComponent implements OnInit {
       nombre: this.form.value.nombre,
       correo: this.form.value.correo,
       clave: this.form.value.clave,
-      edad: this.form.value.edad,
+      edad: this.age(),
       nacionalidad: this.form.value.nacionalidad,
       genero: this.form.value.genero,
       tipo: "C",
-    })
-      .subscribe(response => {
+    }).subscribe(response => {
         console.log(response);
         this.router.navigate(["../login"])
-      })
+      },
+        error => {
+        console.log(error);
+    }
+    )
+  }
+
+  public age() {
+    let formDate = this.form.value.edad;
+    let ageDifMs = Date.now() - Date.parse(formDate);
+    let ageDate = new Date(ageDifMs);
+    return Math.abs(ageDate.getUTCFullYear() - 1970)
   }
 }
