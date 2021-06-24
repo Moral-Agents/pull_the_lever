@@ -12,34 +12,34 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="/pull-the-lever"+"/v1")
+@RequestMapping(path="/pull"+"/v1")
 public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
 
     @ResponseStatus(HttpStatus.OK)
-    @PostMapping("/usuario")
+    @PostMapping("/usuarios")
     public GameResponse<UsuarioDto> createUsuario(@RequestBody CreateUsuarioDto createUsuarioDto) throws GameException {
         return new GameResponse<>("Success",String.valueOf(HttpStatus.OK), "OK",
                 usuarioService.createUsuario(createUsuarioDto));
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/iniciar-sesion/{correoUsuario}/{claveUsuario}")
+    @GetMapping("/usuarios/{correoUsuario}/{claveUsuario}")
     public GameResponse<UsuarioDto> getUsuarioByCorreoAndClave(@PathVariable String correoUsuario, @PathVariable String claveUsuario) throws GameException{
         return new GameResponse<>("Success", String.valueOf(HttpStatus.OK),"OK",
                 usuarioService.getUsuarioByCorreoAndClave(correoUsuario, claveUsuario));
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PutMapping("/cambioTipoUsuario/{correoUsuario}/{tipoUsuario}")
+    @PutMapping("/usuarios/{correoUsuario}/{tipoUsuario}")
     public void updateTipoDeUsuario(@PathVariable String correoUsuario, @PathVariable Character tipoUsuario) throws GameException{
         usuarioService.updateTipoUsuario(correoUsuario, tipoUsuario);
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PutMapping("/cambioClave/{correoUsuario}/{claveUsuario}")
+    @PutMapping("/usuarios/{correoUsuario}/{claveUsuario}")
     public void updateClave(@PathVariable String correoUsuario, @PathVariable String claveUsuario) throws GameException{
         usuarioService.updateClave(correoUsuario, claveUsuario);
     }

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="/pull-the-lever"+"/v1")
+@RequestMapping(path="/pull"+"/v1")
 public class ComentarioController {
 
 
@@ -35,12 +35,12 @@ public class ComentarioController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PutMapping("/updateComentarios/{comentarioId}/{comentarioDescripcion}")
+    @PutMapping("/comentarios/{comentarioId}/{comentarioDescripcion}")
     public void updateComentarioById(@PathVariable Long comentarioId, @PathVariable String comentarioDescripcion) throws GameException{
         comentarioService.updateComentarioById(comentarioId, comentarioDescripcion);
     }
 
-    @DeleteMapping("/deleteComentarios/{comentarioId}")
+    @DeleteMapping("/comentarios/{comentarioId}")
     public void deleteComentario(@PathVariable Long comentarioId){
         comentarioService.deleteComentario(comentarioId);
     }

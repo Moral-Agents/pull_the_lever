@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="/pull-the-lever"+"/v1")
+@RequestMapping(path="/pull"+"/v1")
 public class RespuestaController {
 
 
@@ -40,7 +40,7 @@ public class RespuestaController {
               respuestaService.getRespuestaByPreguntaIdAndUsuarioId(preguntaId, usuarioId));
    }
 
-   @DeleteMapping("/deleteRespuestas/{preguntaId}")
+   @DeleteMapping("/respuestas/{preguntaId}")
    public void deleteRespuestasByPreguntaId(@PathVariable Long preguntaId){
       respuestaService.deleteRespuestaByPreguntaId(preguntaId);
    }

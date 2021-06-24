@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="/pull-the-lever"+"/v1")
+@RequestMapping(path="/pull"+"/v1")
 public class PreguntaController {
 
     @Autowired
@@ -41,18 +41,18 @@ public class PreguntaController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PutMapping("/updatePregunta")
+    @PutMapping("/preguntas")
     public void updatePregunta(@RequestBody UpdatePreguntaDto updatePreguntaDto) throws GameException{
         preguntaService.updatePregunta(updatePreguntaDto);
     }
 
-    @DeleteMapping("/deletePregunta/{preguntaId}")
+    @DeleteMapping("/preguntas/{preguntaId}")
     public void deletePregunta(@PathVariable Long preguntaId){
         preguntaService.deletePreguntaById(preguntaId);
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/preguntasPage")
+    @GetMapping("/preguntas")
     public GameResponse<Page<Pregunta>> getAllPreguntas(Pageable pageable) throws GameException{
         return new GameResponse<>("Success", String.valueOf(HttpStatus.OK), "OK",
                 preguntaService.findAll(pageable));
