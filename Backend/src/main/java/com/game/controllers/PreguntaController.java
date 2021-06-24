@@ -50,11 +50,5 @@ public class PreguntaController {
     public void deletePregunta(@PathVariable Long preguntaId){
         preguntaService.deletePreguntaById(preguntaId);
     }
-
-    @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/preguntas")
-    public GameResponse<Page<Pregunta>> getAllPreguntas(Pageable pageable) throws GameException{
-        return new GameResponse<>("Success", String.valueOf(HttpStatus.OK), "OK",
-                preguntaService.findAll(pageable));
-    }
+    
 }
