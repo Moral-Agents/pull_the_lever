@@ -14,6 +14,7 @@ import { PreguntaDetailComponent } from './pregunta-detail/pregunta-detail.compo
 import { LoginComponent } from './login/login.component';
 import { HeaderUserComponent } from './header-user/header-user.component';
 import { PlansComponent } from './plans/plans.component';
+import { ContribuirComponent } from './contribuir/contribuir.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PlansComponent } from './plans/plans.component';
     PreguntaDetailComponent,
     LoginComponent,
     HeaderUserComponent,
-    PlansComponent
+    PlansComponent,
+    ContribuirComponent
   ],
   imports: [
     BrowserModule,

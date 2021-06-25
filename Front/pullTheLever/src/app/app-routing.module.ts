@@ -6,30 +6,35 @@ import { PreguntaDetailComponent } from './pregunta-detail/pregunta-detail.compo
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from "./login/login.component";
 import { PlansComponent } from './plans/plans.component';
+import { ContribuirComponent } from './contribuir/contribuir.component';
 const routes: Routes = [
   {
-    path:'',
-    component:HomeComponent
+    path: '',
+    component: HomeComponent
   },
   {
-    path:'register',
-    component:RegisterComponent
+    path: 'register',
+    component: RegisterComponent
   },
   {
-    path:'game',
-    component:GameComponent
+    path: 'game',
+    component: GameComponent
   },
   {
-    path:'pregunta/:id',
-    component:PreguntaDetailComponent
+    path: 'pregunta/:id',
+    component: PreguntaDetailComponent
   },
   {
-    path:'login',
-    component:LoginComponent
+    path: 'login',
+    component: LoginComponent
   },
   {
-    path:'plans',
-    component:PlansComponent
+    path: 'plans',
+    component: PlansComponent
+  },
+  {
+    path: 'contribuir',
+    component: ContribuirComponent
   }
 ];
 

@@ -1,0 +1,26 @@
+<app-header-guest *ngIf="!userId"></app-header-guest>
+<app-header-user *ngIf="userId"></app-header-user>
+
+<section class="contribuir" id="contribuir">
+    <div class="contribuir_container">
+        <form [formGroup]="form">
+            <h2 class="contribuir_title"> Contribuir</h2>
+            <p class="contribuir_welcome">Contribuye a Moral Agents creando un dilema</p>
+            <div>
+              <input type="text" id="name" name="name" placeholder="Nombre del dilema" formControlName="name">
+            </div>
+            <div>
+              <textarea id="description" name="description"  cols="50" formControlName="description" placeholder="Descripción del dilema..."></textarea>
+            </div>
+            <div>
+              <input type="text" id="option1" name="option1" placeholder="Opcion 1.." formControlName="opcion1">
+            </div>
+            <div>
+                <input type="text" id="option2" name="option2" placeholder="Opcion 2.." formControlName="opcion2">
+            </div>
+            <button class="contribuir_submit" >Crear Dilema</button>
+        </form>
+    </div>
+</section>
+
+<app-footer></app-footer>
