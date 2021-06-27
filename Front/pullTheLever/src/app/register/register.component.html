@@ -21,27 +21,28 @@
             <h2 class="register_title">Crear una cuenta gratis</h2>
             <p class="register_welcome">Te damos la bienvenida a Pull The Lever</p>
             <div>
-              <input type="text" id="name" name="name" placeholder="Nombre" formControlName="nombre">
               <span *ngIf="form.controls['nombre'].hasError('required') && form.controls['nombre'].touched">Requerido</span>
-              <span *ngIf="form.controls['nombre'].hasError('minlength') && form.controls['nombre'].touched">Minimo</span>
-              <span *ngIf="form.controls['nombre'].hasError('maxlength') && form.controls['nombre'].touched">Maximo</span>
+              <span *ngIf="form.controls['nombre'].hasError('minlength') && form.controls['nombre'].touched">El nombre debe contener más carácteres</span>
+              <span *ngIf="form.controls['nombre'].hasError('maxlength') && form.controls['nombre'].touched">El nombre debe contener menos carácteres</span>
+              <input type="text" id="name" name="name" placeholder="Nombre" formControlName="nombre">
             </div>
             <div>
-              <input type="email" id="mail" name="mail" placeholder="Correo" formControlName="correo">
               <span *ngIf="form.controls['correo'].hasError('required') && form.controls['correo'].touched">Requerido</span>
               <span *ngIf="form.controls['correo'].hasError('email') && form.controls['correo'].touched">Invalido</span>
+              <input type="email" id="mail" name="mail" placeholder="Correo" formControlName="correo">
             </div>
             <div>
-              <input type="password" id="password" name="password" placeholder="Contraseña" formControlName="clave">
               <span *ngIf="form.controls['clave'].hasError('required') && form.controls['clave'].touched">Requerido</span>
               <span *ngIf="form.controls['clave'].hasError('minlength') && form.controls['clave'].touched">Minimo</span>
               <span *ngIf="form.controls['clave'].hasError('maxlength') && form.controls['clave'].touched">Maximo</span>
+              <input type="password" id="password" name="password" placeholder="Contraseña" formControlName="clave">
             </div>
             <div>
-              <input type="date" id="edad" name="edad" formControlName="edad">
               <span *ngIf="form.controls['edad'].hasError('required') && form.controls['edad'].touched">Requerido</span>
+              <input type="date" id="edad" name="edad" formControlName="edad">
             </div>
-            <div>
+            <div >
+              <span *ngIf="form.controls['nacionalidad'].hasError('required') && form.controls['nacionalidad'].touched">Requerido</span>
               <select name="pais" id="pais" formControlName="nacionalidad">
                 <option value="" selected disabled>Elegir país</option>
                 <option value="Afganistán" id="AF">Afganistán</option>
@@ -282,15 +283,14 @@
                 <option value="Zambia" id="ZM">Zambia</option>
                 <option value="Zimbabue" id="ZW">Zimbabue</option>
               </select>
-              <span *ngIf="form.controls['nacionalidad'].hasError('required') && form.controls['nacionalidad'].touched">Requerido</span>
             </div>
             <div>
+              <span *ngIf="form.controls['genero'].hasError('required') && form.controls['genero'].touched">Requerido</span>
               <select name="genero" id="genero" formControlName="genero">
                 <option value="" selected disabled>Elegir género</option>
                 <option value="M">Masculino</option>
                 <option value="F">Femenino</option>
               </select>
-              <span *ngIf="form.controls['genero'].hasError('required') && form.controls['genero'].touched">Requerido</span>
             </div>
             <button class="register_submit" [disabled]="form.invalid">Registrarse</button>
             <div class="register_recover">

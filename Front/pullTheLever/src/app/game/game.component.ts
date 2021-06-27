@@ -25,7 +25,7 @@ export class GameComponent implements OnInit {
 
 
   public readPreguntas() {
-    this.RestService.get('https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/preguntas')
+    this.RestService.get('https://app-pull-the-lever.herokuapp.com/pull/v1/preguntas')
       .subscribe(response => {
         this.listPreguntas = JSON.parse(JSON.stringify(response)).data;
         this.randomId = Math.floor(Math.random() * this.listPreguntas.length + 1)

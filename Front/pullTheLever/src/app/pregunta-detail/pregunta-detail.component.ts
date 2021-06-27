@@ -37,7 +37,7 @@ export class PreguntaDetailComponent implements OnInit {
   }
 
   public getRespuesta() {
-    this.RestService.get(`https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/respuestas/${this.id}/${this.userId}`)
+    this.RestService.get(`https://app-pull-the-lever.herokuap/pull/v1/respuestas/${this.id}/${this.userId}`)
       .subscribe(response => {
         this.respuesta = JSON.parse(JSON.stringify(response)).data;
         console.log("RESPUESTA: " + this.respuesta);
@@ -47,7 +47,7 @@ export class PreguntaDetailComponent implements OnInit {
 
   public createComentarios() {
     console.log("USER ID: " + this.userId)
-    this.RestService.post('https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/comentarios', {
+    this.RestService.post('https://app-pull-the-lever.herokuapp.com/pull/v1/comentarios', {
       comentario: this.form.value.text,
       preguntaId: this.id,
       usuarioId: this.userId
@@ -60,7 +60,7 @@ export class PreguntaDetailComponent implements OnInit {
   }
 
   public createRespuesta() {
-    this.RestService.post('https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/respuestas', {
+    this.RestService.post('https://app-pull-the-lever.herokuapp.com/pull/v1/respuestas', {
       preguntaId: Number(this.id),
       respuesta: Number(this.respuesta),
       usuarioId: this.userId
@@ -72,7 +72,7 @@ export class PreguntaDetailComponent implements OnInit {
 
   public readComentarios(id: string) {
     let inputPost = document.getElementById("inputPost") as HTMLInputElement;
-    this.RestService.get(`https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/comentarios/${id}`)
+    this.RestService.get(`https://app-pull-the-lever.herokuapp.com/pull/v1/comentarios/${id}`)
       .subscribe(response => {
         this.listComentarios = JSON.parse(JSON.stringify(response)).data;
         inputPost.value = "";
@@ -80,7 +80,7 @@ export class PreguntaDetailComponent implements OnInit {
   }
 
   public updateComentarios(id: string) {
-    this.RestService.put(`https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/updateComentarios/${id}/${this.form.value.textUpdate}`, {
+    this.RestService.put(`https://app-pull-the-lever.herokuapp.com/pull/v1/updateComentarios/${id}/${this.form.value.textUpdate}`, {
     })
       .subscribe(response => {
         console.log(response);
@@ -90,7 +90,7 @@ export class PreguntaDetailComponent implements OnInit {
   }
 
   public deleteComentario(id: string) {
-    this.RestService.delete(`https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/deleteComentarios/${id}`)
+    this.RestService.delete(`https://app-pull-the-lever.herokuapp.com/pull/v1/deleteComentarios/${id}`)
       .subscribe(response => {
         console.log(response);
         this.readComentarios(this.id);
@@ -98,7 +98,7 @@ export class PreguntaDetailComponent implements OnInit {
   }
 
   getData(id: string) {
-    this.RestService.get(`https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/preguntas/${id}`)
+    this.RestService.get(`https://app-pull-the-lever.herokuapp.com/pull/v1/preguntas/${id}`)
       .subscribe(response => {
         this.pregunta = JSON.parse(JSON.stringify(response)).data;
         console.log(this.pregunta)
