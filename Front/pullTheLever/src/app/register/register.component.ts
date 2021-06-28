@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
   }
 
   public createUser() {
-    this.RestService.post('https://app-pull-the-lever.herokuapp.com/pull/v1/usuario', {
+    this.RestService.post('https://app-pull-the-lever.herokuapp.com/pull/v1/usuarios', {
       nombre: this.form.value.nombre,
       correo: this.form.value.correo,
       clave: this.form.value.clave,

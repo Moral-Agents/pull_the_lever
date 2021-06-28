@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   }
 
   public getUsuario() {
-    this.RestService.get(`https://app-pull-the-lever.herokuapp.com/pull-the-lever/v1/iniciar-sesion/${this.form.value.correo}/${this.form.value.clave}`)
+    this.RestService.get(`https://app-pull-the-lever.herokuapp.com/pull/v1/usuarios/${this.form.value.correo}/${this.form.value.clave}`)
       .subscribe(
         data => {
           let user = JSON.parse(JSON.stringify(data)).data

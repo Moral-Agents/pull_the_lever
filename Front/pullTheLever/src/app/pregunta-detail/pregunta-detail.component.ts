@@ -37,7 +37,7 @@ export class PreguntaDetailComponent implements OnInit {
   }
 
   public getRespuesta() {
-    this.RestService.get(`https://app-pull-the-lever.herokuap/pull/v1/respuestas/${this.id}/${this.userId}`)
+    this.RestService.get(`https://app-pull-the-lever.herokuapp.com/pull/v1/respuestas/${this.id}/${this.userId}`)
       .subscribe(response => {
         this.respuesta = JSON.parse(JSON.stringify(response)).data;
         console.log("RESPUESTA: " + this.respuesta);
@@ -80,7 +80,7 @@ export class PreguntaDetailComponent implements OnInit {
   }
 
   public updateComentarios(id: string) {
-    this.RestService.put(`https://app-pull-the-lever.herokuapp.com/pull/v1/updateComentarios/${id}/${this.form.value.textUpdate}`, {
+    this.RestService.put(`https://app-pull-the-lever.herokuapp.com/pull/v1/comentarios/${id}/${this.form.value.textUpdate}`, {
     })
       .subscribe(response => {
         console.log(response);
@@ -90,7 +90,7 @@ export class PreguntaDetailComponent implements OnInit {
   }
 
   public deleteComentario(id: string) {
-    this.RestService.delete(`https://app-pull-the-lever.herokuapp.com/pull/v1/deleteComentarios/${id}`)
+    this.RestService.delete(`https://app-pull-the-lever.herokuapp.com/pull/v1/comentarios/${id}`)
       .subscribe(response => {
         console.log(response);
         this.readComentarios(this.id);

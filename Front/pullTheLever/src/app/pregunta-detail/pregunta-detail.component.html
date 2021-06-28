@@ -1,6 +1,11 @@
 <app-header-guest *ngIf="!userId"></app-header-guest>
 <app-header-user *ngIf="userId"></app-header-user>
 <div class="dilemmas">
+    <div class="dilemmas_navigation">
+        <a *ngIf="id != 1">< Prev</a>
+        <p *ngIf="id == 1">< Prev</p>
+        <a class="dilemmas_navigation-next"> Next ></a>
+    </div>
     <div class="dilemmas_item">
         <div class="dilemmas_left">
             <img src={{pregunta?.img}} alt="imagen dilema">

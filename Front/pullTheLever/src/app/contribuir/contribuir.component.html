@@ -3,7 +3,7 @@
 
 <section class="contribuir" id="contribuir">
     <div class="contribuir_container">
-        <form [formGroup]="form">
+        <form [formGroup]="form" (submit)="createPregunta()">
             <h2 class="contribuir_title"> Contribuir</h2>
             <p class="contribuir_welcome">Contribuye a Moral Agents creando un dilema</p>
             <div>
@@ -20,6 +20,7 @@
             </div>
             <button class="contribuir_submit" >Crear Dilema</button>
         </form>
+        
     </div>
 </section>
 

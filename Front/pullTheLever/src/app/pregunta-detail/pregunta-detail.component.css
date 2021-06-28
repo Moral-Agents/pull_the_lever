@@ -4,6 +4,18 @@
   margin: 0 auto;
 }
 
+.dilemmas_navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.dilemmas_navigation a{
+  color: #0067f4;
+  cursor: pointer;
+}
+
+
 .dilemmas_item {
   display: flex;
   margin-bottom: 2rem;
