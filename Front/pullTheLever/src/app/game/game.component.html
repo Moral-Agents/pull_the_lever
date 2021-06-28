@@ -17,7 +17,7 @@
         </div>
         <div class="dilemmas_right">
             <h2 class="dilemmas_title"><a [routerLink] = "['/','pregunta',pregunta?.id]">{{pregunta?.nombre}}</a></h2>
-            <p class="dilemmas_description">{{pregunta?.descripcion}}</p>
+            <p class="dilemmas_description">{{pregunta?.descripcion | slice:0:150}} ...</p>
             <ul class="dilemmas_ul">
                 <li class="dilemmas_views">Visitas: {{pregunta?.visitas}}</li>
                 <li class="dilemmas_date"> {{pregunta?.fecha_creacion | date: 'longDate'}}</li>

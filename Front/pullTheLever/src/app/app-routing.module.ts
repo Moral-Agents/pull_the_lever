@@ -7,6 +7,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from "./login/login.component";
 import { PlansComponent } from './plans/plans.component';
 import { ContribuirComponent } from './contribuir/contribuir.component';
+import { ProfileComponent} from './profile/profile.component';
 const routes: Routes = [
   {
     path: '',
@@ -35,6 +36,10 @@ const routes: Routes = [
   {
     path: 'contribuir',
     component: ContribuirComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
   }
 ];
 

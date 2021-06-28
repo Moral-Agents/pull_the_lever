@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { HeaderUserComponent } from './header-user/header-user.component';
 import { PlansComponent } from './plans/plans.component';
 import { ContribuirComponent } from './contribuir/contribuir.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ContribuirComponent } from './contribuir/contribuir.component';
     LoginComponent,
     HeaderUserComponent,
     PlansComponent,
-    ContribuirComponent
+    ContribuirComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

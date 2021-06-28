@@ -1,0 +1,30 @@
+<app-header-user></app-header-user>
+
+<div class="profile">
+	<h2>Datos del perfil</h2>
+		<div class="data">
+			<img src={{user?.img}}>
+
+			<div class="data_inputs">
+				<label for="nombre">Nombre</label>
+				<input name="nombre" type="text" value={{user?.nombre}} disabled>
+				<label for="nombre">Email</label>
+				<input type="text" value={{user?.correo}} disabled>
+				<label for="nombre">Género</label>
+				<input type="text" value={{user?.genero}} disabled>
+				<label for="nombre">Nacionalidad</label>
+				<input type="text" value={{user?.nacionalidad}} disabled>
+				<label for="nombre">Edad</label>
+				<input type="text" value={{user?.edad}} disabled>
+			</div>
+		</div>
+	<div class="changePassword">
+		<h2>Cambiar Contraseña</h2>
+		<form>
+			<input type="text" placeholder="Ingresar nueva contraseña">
+			<input type="submit">
+		</form>
+	</div>
+</div>
+
+<app-footer></app-footer>

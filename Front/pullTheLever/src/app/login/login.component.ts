@@ -28,11 +28,13 @@ export class LoginComponent implements OnInit {
           let user = JSON.parse(JSON.stringify(data)).data
           localStorage.setItem("accessToken", user.id)
           localStorage.setItem("userName",user.nombre)
+          localStorage.setItem("userEmail",user.correo)
+          localStorage.setItem("userPassword",this.form.value.clave)
           this.router.navigate(["../game"])
       },
       error => {
           console.log(error)
-          alert("Usuario o contrasseña incorrecta")
+          alert("Usuario o contraseña incorrecta")
         })
   }
 }

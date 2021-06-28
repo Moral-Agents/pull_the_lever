@@ -1,0 +1,43 @@
+.profile{
+	width: 60%;
+	margin: 2rem auto;
+}
+
+.data{
+	display: flex;
+	margin-top: 2rem;
+}
+
+.data img{
+	width: 100px;
+	height: 100px;
+}
+
+.data_inputs{
+	max-width: 100%;
+	margin-left: 2rem;
+}
+
+.data_inputs input {
+	width: 100%;
+	margin-bottom: 1rem;
+	padding: .5rem 1rem;
+}
+
+.changePassword{
+	margin-top: 2rem;
+}
+
+.changePassword h2{
+	margin-bottom: 2rem;
+}
+
+.changePassword input {
+	width: 100%;
+	margin-bottom: 1rem;
+	padding: .5rem 1rem;
+}
+
+.changePassword input[type="submit"]{
+	width: auto;
+}
