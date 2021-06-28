@@ -15,7 +15,7 @@
             <p class="dilemmas_description">{{pregunta?.descripcion}}</p>
             <ul class="dilemmas_ul">
                 <li class="dilemmas_views">Visitas: {{pregunta?.visitas}}</li>
-                <li class="dilemmas_date">Fecha: {{pregunta?.fecha_creacion}}</li>
+                <li class="dilemmas_date">{{pregunta?.fecha_creacion | date: 'longDate'}}</li>
             </ul>
             <div *ngIf="!respuesta">
                 <button class="dilemmas_a" (click)="respuesta=0;createRespuesta();">{{pregunta?.opcion_1}}</button>
@@ -54,7 +54,7 @@
             </div>
             <div *ngIf="accion == false || comentario.id != key">
                 <p>{{comentario?.comentario}}</p>
-                <p>{{comentario?.fecha_creacion}}</p>
+                <p>{{comentario?.fecha_creacion | date: 'longDate'}}</p>
             </div>
             <div *ngIf="accion == true && comentario.id == key">
                 <form [formGroup]="form"  (submit)="updateComentarios(comentario.id)">

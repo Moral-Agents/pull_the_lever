@@ -20,7 +20,7 @@
             <p class="dilemmas_description">{{pregunta?.descripcion}}</p>
             <ul class="dilemmas_ul">
                 <li class="dilemmas_views">Visitas: {{pregunta?.visitas}}</li>
-                <li class="dilemmas_date">Fecha: {{pregunta?.fecha_creacion}}</li>
+                <li class="dilemmas_date"> {{pregunta?.fecha_creacion | date: 'longDate'}}</li>
             </ul>
         </div>
     </div>
