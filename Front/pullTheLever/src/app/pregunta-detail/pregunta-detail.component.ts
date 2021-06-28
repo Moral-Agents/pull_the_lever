@@ -1,7 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute , Router} from '@angular/router';
 import { RestService } from '../rest.service';
 import { FormBuilder, FormGroup } from "@angular/forms";
+
 @Component({
   selector: 'app-pregunta-detail',
   templateUrl: './pregunta-detail.component.html',
@@ -10,6 +11,7 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 export class PreguntaDetailComponent implements OnInit {
   public form!: FormGroup;
   public pregunta: any
+  public preguntaNext: any
   public listComentarios: any = {}
   public id: any
   public key: any
@@ -17,12 +19,15 @@ export class PreguntaDetailComponent implements OnInit {
   public userId: any
   accion: boolean = false
 
-  constructor(private route: ActivatedRoute, private formBuilder: FormBuilder, private RestService: RestService) { }
+  constructor(private router: Router,  private route: ActivatedRoute, private formBuilder: FormBuilder, private RestService: RestService) { 
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((paramMap: any) => {
       const { params } = paramMap;
       this.id = params.id;
+
     })
     this.getData(this.id);
     this.readComentarios(this.id);
@@ -103,5 +108,13 @@ export class PreguntaDetailComponent implements OnInit {
         this.pregunta = JSON.parse(JSON.stringify(response)).data;
         console.log(this.pregunta)
       })
+    this.RestService.get(`https://app-pull-the-lever.herokuapp.com/pull/v1/preguntas/${Number(id) + 1}`)
+      .subscribe(response => {
+        this.preguntaNext = JSON.parse(JSON.stringify(response)).data;
+        console.log(this.preguntaNext)
+      })
   }
+
+
+
 }

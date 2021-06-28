@@ -2,9 +2,9 @@
 <app-header-user *ngIf="userId"></app-header-user>
 <div class="dilemmas">
     <div class="dilemmas_navigation">
-        <a *ngIf="id != 1">< Prev</a>
+        <a *ngIf="id != 1"  [routerLink] = "['/','pregunta',pregunta?.id - 1]">< Prev</a>
         <p *ngIf="id == 1">< Prev</p>
-        <a class="dilemmas_navigation-next"> Next ></a>
+        <a  *ngIf="preguntaNext != null" [routerLink] = "['/','pregunta',pregunta?.id + 1]" class="dilemmas_navigation-next"> Next ></a>
     </div>
     <div class="dilemmas_item">
         <div class="dilemmas_left">
@@ -68,6 +68,6 @@
 <app-footer></app-footer>
 
 
-
+<router-outlet></router-outlet>
 
 
