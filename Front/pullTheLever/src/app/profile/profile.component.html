@@ -20,8 +20,8 @@
 		</div>
 	<div class="changePassword">
 		<h2>Cambiar Contraseña</h2>
-		<form>
-			<input type="text" placeholder="Ingresar nueva contraseña">
+		<form [formGroup]="form"  (submit)="updateClave()">
+			<input type="text" placeholder="Ingresar nueva contraseña" formControlName="text">
 			<input type="submit">
 		</form>
 	</div>

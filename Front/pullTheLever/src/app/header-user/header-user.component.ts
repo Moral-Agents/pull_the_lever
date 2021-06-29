@@ -11,11 +11,16 @@ export class HeaderUserComponent implements OnInit {
   constructor(private RestService:RestService,private router: Router) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem("accessToken") == null){
+      this.router.navigateByUrl("/game");
+    }
   }
 
   public logout(){
     localStorage.removeItem("accessToken");
-    this.router.navigate(["../game"])
+    localStorage.removeItem("userEmail");
+    localStorage.removeItem("userPassword");
+    this.router.navigateByUrl("/game");
     window.location.reload()
   }
 }
