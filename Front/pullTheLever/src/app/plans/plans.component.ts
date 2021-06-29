@@ -45,7 +45,10 @@ export class PlansComponent implements OnInit {
   }
 
   upgraded() {
-    this.RestService.put(`https://app-pull-the-lever.herokuapp.com/pull/v1/usuarios/${localStorage.getItem("userEmail")}/P`, {})
+    this.RestService.put(`https://app-pull-the-lever.herokuapp.com/pull/v1/usuarios/tipo/${localStorage.getItem("userEmail")}/P`, {})
+      .subscribe(response => {
+        console.log(response)
+      })
     this.router.navigate(["../game"])
     alert("Ahora eres miembro del plan premium")
   }
