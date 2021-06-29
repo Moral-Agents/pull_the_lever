@@ -50,5 +50,4 @@ public class PreguntaController {
     public void deletePregunta(@PathVariable Long preguntaId){
         preguntaService.deletePreguntaById(preguntaId);
     }
-    
 }
