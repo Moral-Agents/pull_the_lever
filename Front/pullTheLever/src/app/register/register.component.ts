@@ -34,12 +34,14 @@ export class RegisterComponent implements OnInit {
       nacionalidad: this.form.value.nacionalidad,
       genero: this.form.value.genero,
       tipo: "C",
-    }).subscribe(response => {
+    }).subscribe(
+      response => {
         console.log(response);
         this.router.navigate(["../login"])
       },
         error => {
         console.log(error);
+        alert("Datos ingresados invaálidos");
     }
     )
   }
