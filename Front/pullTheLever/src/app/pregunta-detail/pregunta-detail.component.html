@@ -17,13 +17,18 @@
                 <li class="dilemmas_views">Visitas: {{pregunta?.visitas}}</li>
                 <li class="dilemmas_date">{{pregunta?.fecha_creacion | date: 'longDate'}}</li>
             </ul>
-            <div *ngIf="!respuesta">
+            <div *ngIf="!respuesta && userId">
                 <button class="dilemmas_a" (click)="respuesta=0;createRespuesta();">{{pregunta?.opcion_1}}</button>
                 <button class="dilemmas_b" (click)="respuesta=1;createRespuesta();">{{pregunta?.opcion_2}}</button>
             </div>
-            <div *ngIf="respuesta">
+            <div *ngIf="respuesta && userId">
                 <button class="dilemmas_a" disabled>{{pregunta?.cant_1 / (pregunta?.cant_1 + pregunta?.cant_2) * 100}}% </button>
                 <button class="dilemmas_b" disabled>{{pregunta?.cant_2 / (pregunta?.cant_1 + pregunta?.cant_2)* 100}}%</button>
+            </div>
+
+            <div *ngIf="!userId">
+                <a class="dilemmas_a" href="/login">{{pregunta?.opcion_1}}</a>
+                <a class="dilemmas_b" href="/login">{{pregunta?.opcion_2}}</a>
             </div>
         </div>
     </div>
@@ -31,7 +36,7 @@
 
 <div class="comments">
     <h3>{{listComentarios.length}} Comentarios</h3>
-    <form class="comments_form" [formGroup]="form"  (submit)="createComentarios()">
+    <form *ngIf="userId" class="comments_form" [formGroup]="form"  (submit)="createComentarios()">
       <div class="comments_user-left">
         <img class="comments_user-img" src="https://picsum.photos/100"/>
       </div>
@@ -40,6 +45,16 @@
         <button class="comments_submit">Enviar</button>
       </div>
     </form>
+
+   <form *ngIf="!userId" class="comments_form">
+        <div class="comments_user-left">
+            <img class="comments_user-img" src="https://picsum.photos/100"/>
+        </div>
+        <div class="comments_user-right">
+            <input id="inputPost" type="text" placeholder="Añada un comentario público...." class="comments_textarea" [routerLink] = "['/','login']" formControlName="text" />
+        </div>
+   </form>
+
     <div class="comment" *ngFor="let comentario of listComentarios">
         <div class="comment_left">
             <img src={{comentario?.img}}/>
