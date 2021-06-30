@@ -19,7 +19,7 @@ export class PreguntaDetailComponent implements OnInit {
   public userId: any
   accion: boolean = false
 
-  constructor(private router: Router,  private route: ActivatedRoute, private formBuilder: FormBuilder, private RestService: RestService) { 
+  constructor(private router: Router,  private route: ActivatedRoute, private formBuilder: FormBuilder, private RestService: RestService) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
@@ -38,7 +38,6 @@ export class PreguntaDetailComponent implements OnInit {
       textUpdate: ['']
     })
     this.getRespuesta();
-
   }
 
   public getRespuesta() {

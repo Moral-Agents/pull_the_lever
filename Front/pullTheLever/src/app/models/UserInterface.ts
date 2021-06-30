@@ -1,9 +1,9 @@
 export interface UserInterface {
-  nombre?: string;
-  correo?: string;
-  clave?: string;
-  edad?: number;
-  nacionalidad?: string;
-  genero?: string;
-  tipo?: string;
+  id: number,
+  respuesta: number,
+  edad: number,
+  nacionalidad: string,
+  genero: string,
+  preguntaId: number,
+  usuarioId: number
 }

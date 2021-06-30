@@ -8,6 +8,7 @@ import { LoginComponent } from "./login/login.component";
 import { PlansComponent } from './plans/plans.component';
 import { ContribuirComponent } from './contribuir/contribuir.component';
 import { ProfileComponent} from './profile/profile.component';
+import { StatsComponent } from "./stats/stats.component";
 const routes: Routes = [
   {
     path: '',
@@ -40,6 +41,10 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent
+  },
+  {
+    path: 'stats',
+    component: StatsComponent
   }
 ];
 

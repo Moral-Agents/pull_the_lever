@@ -16,6 +16,8 @@ import { HeaderUserComponent } from './header-user/header-user.component';
 import { PlansComponent } from './plans/plans.component';
 import { ContribuirComponent } from './contribuir/contribuir.component';
 import { ProfileComponent } from './profile/profile.component';
+import { StatsComponent } from './stats/stats.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -30,13 +32,15 @@ import { ProfileComponent } from './profile/profile.component';
     HeaderUserComponent,
     PlansComponent,
     ContribuirComponent,
-    ProfileComponent
+    ProfileComponent,
+    StatsComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
