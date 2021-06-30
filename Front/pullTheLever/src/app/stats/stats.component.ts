@@ -85,7 +85,14 @@ export class StatsComponent implements OnInit {
   ];
 
   public chartOptions: any = {
-    responsive: true
+    responsive: true,
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
   };
   public chartClicked(e: any): void { }
   public chartHovered(e: any): void { }
