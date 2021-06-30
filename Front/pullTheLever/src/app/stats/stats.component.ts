@@ -23,7 +23,6 @@ export class StatsComponent implements OnInit {
     this.RestService.get(`https://app-pull-the-lever.herokuapp.com/pull/v1/respuestas/${id}`)
       .subscribe( response =>{
         this.respuestas = JSON.parse(JSON.stringify(response)).data
-        console.log(this.respuestas)
         let minEdad = 0
         let maxEdad = 20
         let genero = "M"
@@ -36,8 +35,8 @@ export class StatsComponent implements OnInit {
         })
         this.data = [filter0.length, filter1.length]
         this.labels = ["Option 0", "Option 1"]
-        console.log(this.data)
-        console.log(this.labels)
+        this.chartDatasets = [{ data: this.data, label:"Resultados de pregunta 1"}]
+        this.chartLabels = this.labels
       })
   }
 
