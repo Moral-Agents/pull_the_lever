@@ -1,28 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import { UserInterface } from "../models/UserInterface";
 import { RestService } from "../rest.service";
-import {Observable} from "rxjs";
-import {filter} from "rxjs/operators";
 import { Router } from "@angular/router";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+
 @Component({
   selector: 'app-stats',
   templateUrl: './stats.component.html',
   styleUrls: ['./stats.component.css']
 })
+
 export class StatsComponent implements OnInit {
   public respuestas: any = {}
   public data: any = {}
   public labels: any = {}
   public listPreguntas:any = {}
-  constructor(private RestService: RestService,private router: Router) { }
+  public form!: FormGroup
+
+  constructor(private RestService: RestService,private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     if(localStorage.getItem("userType") != "P" && localStorage.getItem("userType") != "p"){
       this.router.navigateByUrl("/plans");
     }
+    this.form = this.formBuilder.group({
+      min:['', Validators.required],
+      max:['', Validators.required],
+      nacionalidad:['', Validators.required],
+      genero:['', Validators.required],
+    })
     this.readPreguntas();
   }
-
 
   public readPreguntas() {
     this.RestService.get('https://app-pull-the-lever.herokuapp.com/pull/v1/preguntas')
@@ -32,33 +39,26 @@ export class StatsComponent implements OnInit {
   }
 
   public getRespuestas() {
+    let $this = this
     let id = (document.getElementById("selectDilema") as HTMLInputElement).value
     this.RestService.get(`https://app-pull-the-lever.herokuapp.com/pull/v1/respuestas/${id}`)
       .subscribe( response =>{
         this.respuestas = JSON.parse(JSON.stringify(response)).data
-        /*let minEdad = 0
-        let maxEdad = 20
-        let genero = "M"
-        let nacionalidad = "Perú"
+        console.log(this.respuestas)
         let filter0 = this.respuestas.filter(function (f: any) {
-          return f.respuesta == 0 && (f.edad >= minEdad || f.edad <= maxEdad) && f.genero == genero && f.nacionalidad == nacionalidad
+          return f.respuesta == 0 && (f.edad >= $this.form.value.min && f.edad <= $this.form.value.max) && f.genero == $this.form.value.genero && f.nacionalidad == $this.form.value.nacionalidad
         })
         let filter1 = this.respuestas.filter(function (f: any) {
-          return f.respuesta == 1 && (f.edad >= minEdad || f.edad <= maxEdad) && f.genero == genero && f.nacionalidad == nacionalidad
-        })
-        */
-        let filter0 = this.respuestas.filter(function (f: any) {
-          return f.respuesta == 0;
-        })
-        let filter1 = this.respuestas.filter(function (f: any) {
-          return f.respuesta == 1;
+          return f.respuesta == 1 && (f.edad >= $this.form.value.min && f.edad <= $this.form.value.max) && f.genero == $this.form.value.genero && f.nacionalidad == $this.form.value.nacionalidad
         })
         this.data = [filter0.length, filter1.length]
         this.labels = ["Option 0", "Option 1"]
-        this.chartDatasets = [{ data: this.data, label:"Resultados de pregunta 1"}]
+        this.chartDatasets = [{ data: this.data, label:`Resultados de pregunta ${id}`}]
         this.chartLabels = this.labels
       })
   }
+
+
 
   public groupBy(list: any, keyGetter: any) {
     const map = new Map()
