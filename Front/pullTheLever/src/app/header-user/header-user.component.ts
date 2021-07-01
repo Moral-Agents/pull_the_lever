@@ -20,6 +20,7 @@ export class HeaderUserComponent implements OnInit {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("userEmail");
     localStorage.removeItem("userPassword");
+    localStorage.removeItem("userType");
     this.router.navigateByUrl("/game");
     window.location.reload()
   }

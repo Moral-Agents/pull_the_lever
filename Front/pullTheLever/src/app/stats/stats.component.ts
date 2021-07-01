@@ -3,7 +3,7 @@ import { UserInterface } from "../models/UserInterface";
 import { RestService } from "../rest.service";
 import {Observable} from "rxjs";
 import {filter} from "rxjs/operators";
-
+import { Router } from "@angular/router";
 @Component({
   selector: 'app-stats',
   templateUrl: './stats.component.html',
@@ -14,10 +14,12 @@ export class StatsComponent implements OnInit {
   public data: any = {}
   public labels: any = {}
   public listPreguntas:any = {}
-  constructor(private RestService: RestService) { }
+  constructor(private RestService: RestService,private router: Router) { }
 
   ngOnInit(): void {
-    
+    if(localStorage.getItem("userType") != "P" && localStorage.getItem("userType") != "p"){
+      this.router.navigateByUrl("/plans");
+    }
     this.readPreguntas();
   }
 

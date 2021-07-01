@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("userName",user.nombre)
           localStorage.setItem("userEmail",user.correo)
           localStorage.setItem("userPassword",this.form.value.clave)
+          localStorage.setItem("userType",user.tipo)
           this.router.navigate(["../game"])
       },
       error => {
