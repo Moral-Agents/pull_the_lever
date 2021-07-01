@@ -22,8 +22,8 @@
                 <button class="dilemmas_b" (click)="respuesta=1;createRespuesta();">{{pregunta?.opcion_2}}</button>
             </div>
             <div *ngIf="respuesta && userId">
-                <button class="dilemmas_a" disabled>{{pregunta?.cant_1 / (pregunta?.cant_1 + pregunta?.cant_2) * 100}}% </button>
-                <button class="dilemmas_b" disabled>{{pregunta?.cant_2 / (pregunta?.cant_1 + pregunta?.cant_2)* 100}}%</button>
+                <button class="dilemmas_a" disabled>{{(pregunta?.cant_1 / (pregunta?.cant_1 + pregunta?.cant_2) * 100).toFixed(2)}}% </button>
+                <button class="dilemmas_b" disabled>{{(pregunta?.cant_2 / (pregunta?.cant_1 + pregunta?.cant_2)* 100).toFixed(2)}}%</button>
             </div>
 
             <div *ngIf="!userId">

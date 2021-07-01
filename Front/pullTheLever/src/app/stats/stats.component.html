@@ -17,7 +17,7 @@
             (chartClick)="chartClicked($event)">
     </canvas>
   </div>
-  <form [formGroup]="form" (submit)="getRespuestas()">
+  <form [formGroup]="form" (submit)="getRespuestasFiltros()">
     <h2>Aplicar filtros</h2>
     <div>
       <input placeholder="Indicar edad mínima" type="min_age" id="min_edad" name="edad" formControlName="min">
