@@ -13,17 +13,28 @@ export class StatsComponent implements OnInit {
   public respuestas: any = {}
   public data: any = {}
   public labels: any = {}
+  public listPreguntas:any = {}
   constructor(private RestService: RestService) { }
 
   ngOnInit(): void {
-    this.getRespuestas("1")
+    
+    this.readPreguntas();
   }
 
-  public getRespuestas(id: string) {
+
+  public readPreguntas() {
+    this.RestService.get('https://app-pull-the-lever.herokuapp.com/pull/v1/preguntas')
+      .subscribe(response => {
+        this.listPreguntas = JSON.parse(JSON.stringify(response)).data;
+      })
+  }
+
+  public getRespuestas() {
+    let id = (document.getElementById("selectDilema") as HTMLInputElement).value
     this.RestService.get(`https://app-pull-the-lever.herokuapp.com/pull/v1/respuestas/${id}`)
       .subscribe( response =>{
         this.respuestas = JSON.parse(JSON.stringify(response)).data
-        let minEdad = 0
+        /*let minEdad = 0
         let maxEdad = 20
         let genero = "M"
         let nacionalidad = "Perú"
@@ -32,6 +43,13 @@ export class StatsComponent implements OnInit {
         })
         let filter1 = this.respuestas.filter(function (f: any) {
           return f.respuesta == 1 && (f.edad >= minEdad || f.edad <= maxEdad) && f.genero == genero && f.nacionalidad == nacionalidad
+        })
+        */
+        let filter0 = this.respuestas.filter(function (f: any) {
+          return f.respuesta == 0;
+        })
+        let filter1 = this.respuestas.filter(function (f: any) {
+          return f.respuesta == 1;
         })
         this.data = [filter0.length, filter1.length]
         this.labels = ["Option 0", "Option 1"]
@@ -57,10 +75,10 @@ export class StatsComponent implements OnInit {
   public chartType: string = 'bar';
 
   public chartDatasets: Array<any> = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'My First dataset' }
+    { data: [], label: 'Seleccion un dilema' }
   ];
 
-  public chartLabels: Array<any> = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
+  public chartLabels: Array<any> = [];
 
   public chartColors: Array<any> = [
     {
@@ -85,7 +103,14 @@ export class StatsComponent implements OnInit {
   ];
 
   public chartOptions: any = {
-    responsive: true
+    responsive: true,
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
   };
   public chartClicked(e: any): void { }
   public chartHovered(e: any): void { }
