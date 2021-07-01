@@ -46,6 +46,26 @@ export class StatsComponent implements OnInit {
         this.respuestas = JSON.parse(JSON.stringify(response)).data
         console.log(this.respuestas)
         let filter0 = this.respuestas.filter(function (f: any) {
+          return f.respuesta == 0
+        })
+        let filter1 = this.respuestas.filter(function (f: any) {
+          return f.respuesta == 1
+        })
+        this.data = [filter0.length, filter1.length]
+        this.labels = ["Option 0", "Option 1"]
+        this.chartDatasets = [{ data: this.data, label:`Resultados de pregunta ${id}`}]
+        this.chartLabels = this.labels
+      })
+  }
+
+  public getRespuestasFiltros() {
+    let $this = this
+    let id = (document.getElementById("selectDilema") as HTMLInputElement).value
+    this.RestService.get(`https://app-pull-the-lever.herokuapp.com/pull/v1/respuestas/${id}`)
+      .subscribe( response =>{
+        this.respuestas = JSON.parse(JSON.stringify(response)).data
+        console.log(this.respuestas)
+        let filter0 = this.respuestas.filter(function (f: any) {
           return f.respuesta == 0 && (f.edad >= $this.form.value.min && f.edad <= $this.form.value.max) && f.genero == $this.form.value.genero && f.nacionalidad == $this.form.value.nacionalidad
         })
         let filter1 = this.respuestas.filter(function (f: any) {
@@ -57,8 +77,6 @@ export class StatsComponent implements OnInit {
         this.chartLabels = this.labels
       })
   }
-
-
 
   public groupBy(list: any, keyGetter: any) {
     const map = new Map()
